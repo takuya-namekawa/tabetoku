@@ -26,6 +26,8 @@
 
 ## 設計書
 - (ER図)https://docs.google.com/spreadsheets/d/1O8Wl64vK1L7mj7Ow0qC6Aw5dcg7TIhx5_Bi_KeSyPdI/edit#gid=549108681
+- (食べトク_テーブル提議書)https://docs.google.com/spreadsheets/d/1XO7Sy8EFdjBY0Z9oh3Hl2nNxfR4nCxlxcwFGSKlW7FM/edit#gid=652862759
+- (食べトク.UIフロー)https://docs.google.com/spreadsheets/d/1KO-RPyYreoTB2PjU5FU7V9YKgQdzPal5byhHMUou9PQ/edit#gid=549108681
 
 
 ## 開発環境
