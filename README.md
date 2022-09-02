@@ -25,7 +25,8 @@
 顧客側は、その情報を見て予約が出来る。>
 
 ## 設計書
-<(ER図)https://docs.google.com/spreadsheets/d/1O8Wl64vK1L7mj7Ow0qC6Aw5dcg7TIhx5_Bi_KeSyPdI/edit#gid=549108681>
+- (ER図)https://docs.google.com/spreadsheets/d/1O8Wl64vK1L7mj7Ow0qC6Aw5dcg7TIhx5_Bi_KeSyPdI/edit#gid=549108681
+
 
 ## 開発環境
 - OS：Linux(CentOS)
