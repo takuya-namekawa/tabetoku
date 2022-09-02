@@ -36,5 +36,5 @@
 
 ## 使用素材
 - (https://www.canva.com/)　サイト名:canva アイコン使用のため
--(https://www.foodiesfeed.com/)　サイト名:foodiesfeed 写真素材の使用のため
 
+- (https://www.foodiesfeed.com/)　サイト名:foodiesfeed 写真素材の使用のため
