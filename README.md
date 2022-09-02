@@ -25,7 +25,7 @@
 顧客側は、その情報を見て予約が出来る。>
 
 ## 設計書
-<...>
+<(ER図)https://docs.google.com/spreadsheets/d/1O8Wl64vK1L7mj7Ow0qC6Aw5dcg7TIhx5_Bi_KeSyPdI/edit#gid=549108681>
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -35,5 +35,6 @@
 - IDE：Cloud9
 
 ## 使用素材
-- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
-- 使用しない場合は、使用素材の項目をREADMEから削除してください。
+- (https://www.canva.com/)　サイト名:canva アイコン使用のため
+-(https://www.foodiesfeed.com/)　サイト名:foodiesfeed 写真素材の使用のため
+
