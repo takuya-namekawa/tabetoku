@@ -1,0 +1,14 @@
+<h1>Public::Homes#top</h1>
+<p>Find me in app/views/public/homes/top.html.erb</p>
+<%= link_to "会員サインアップ" , new_customer_registration_path %>
+<%= link_to "会員ログイン" ,  new_customer_session_path %>
+<%= link_to "会員ログアウト" ,destroy_customer_session_path, method: :delete %>
+<%= link_to "会員マイページ" ,   my_page_customers_path %>
+<br>
+<br>
+<br>
+<br>
+<%= link_to "shopサインアップ" , new_admin_registration_path %>
+<%= link_to "shopログイン" ,   new_admin_session_path %>
+<%= link_to "shopログアウト" , destroy_admin_session_path, method: :delete %>
+<%= link_to "shopマイページ" ,   my_page_admins_path %>
