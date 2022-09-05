@@ -1,0 +1,40 @@
+<div class="container m-5">
+  <div class="row">
+    <div class="text-center col-sm-8">
+      <%= image_tag @item.get_profile_image(650,650)%>
+    </div>
+    <div class="col-sm-4">
+      <table class="table table-borderless">
+         <tr>
+           <td><%= image_tag @item.admin.get_profile_image(150,150)%></td>
+         </tr>
+         <tr>
+            <td><h3><%= @item.name %></h3></td>
+         </tr>
+         <tr>
+            <td><h6><%= @item.explanation %></h6></td>
+         </tr>
+         <tr>
+            <td><h3>提供価格<%= @item.half_price %>円(税込)</h3></td>
+         </tr>
+         <tr>
+            <td>正規価格<%= @item.price %>円(税込)</td>
+         </tr>
+         <tr>
+            <td>
+               <% if @item.is_ordered == true %>
+                <%= form_with model: @cart_item, url: cart_items_path(item_id: @item.id)  do |f| %>
+                <%= f.hidden_field :item_id, value: @item.id %>
+                <%= f.hidden_field :customer_id, :value => current_customer.id %>
+                <%= f.select :amount,@item_inventory,{include_blank: '個数選択'},required:true%>&emsp;
+                <%= f.submit 'カートに入れる' ,class: 'btn btn-success btn-sm'%><% end %>
+               <% else %>
+                 <h4>sold-out</h4>
+               <% end %>
+               <%= link_to "カートに戻る",   cart_items_path %>
+            </td>
+          </tr>
+        </table>
+      </div>
+  </div>
+</div>

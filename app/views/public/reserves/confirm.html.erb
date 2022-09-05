@@ -1,0 +1,24 @@
+ <h5>支払方法</h5>
+<%= form_with model: @reserve, url: confirm_path do |f| %>
+
+ <%= f.radio_button :payment_method, Reserve.payment_methods.key(0) %>
+ <%= f.label :payment_method, Reserve.payment_methods_i18n[:cash] %>
+ <br>
+ <%= f.radio_button :payment_method, Reserve.payment_methods.key(1) %>
+ <%= f.label :payment_method, Reserve.payment_methods_i18n[:credit_card]%>
+ <br>
+ <%= f.radio_button :payment_method, Reserve.payment_methods.key(2) %>
+ <%= f.label :payment_method, Reserve.payment_methods_i18n[:transportation_money]%>
+ <br>
+
+ <%= f.radio_button :payment_method, Reserve.payment_methods.key(3) %>
+ <%= f.label :payment_method, Reserve.payment_methods_i18n[:barcode]%>
+
+
+ <%= f.submit "ご予約を確定する" %>
+ <br>
+ <%#= f.time_field :visit_time, min: "11:00:00", max: "21:00:00" %>
+ <%= f.time_select :visit_time, default: Time.zone.now, minute_step: 15 %>
+
+ <%#= f.collection_select :visit_time, @offer_time, :id, :name, prompt: "-- 選択してください --", class: 'form-control'%>
+<% end %>

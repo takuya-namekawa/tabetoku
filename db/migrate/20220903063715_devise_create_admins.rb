@@ -35,7 +35,9 @@ class DeviseCreateAdmins < ActiveRecord::Migration[6.1]
       t.string :address, null: false
       t.string :phone_number, null: false
       t.string :home_page
-
+      t.string :start_offer
+      t.string :end_offer
+      
       t.timestamps null: false
     end
 

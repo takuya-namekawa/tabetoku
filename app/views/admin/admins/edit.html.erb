@@ -1,6 +1,6 @@
 <h1>Admin::Admins#edit</h1>
 <p>Find me in app/views/admin/admins/edit.html.erb</p>
-<%= form_with model: @admin, url: admin_path(@admin) do |f| %>
+<%= form_with model: @admin, url: admin_admin_path(@admin) do |f| %>
   <%= f.label :"店舗名" %>
   <%= f.text_field :name %>
   <%= f.label :"住所" %>
@@ -11,5 +11,11 @@
   <%= f.text_field :home_page %>
   <%= f.label :"メールアドレス"%>
   <%= f.email_field :email %>
+  <%= f.label :"提供開始時間" %>
+  <%= f.text_field :start_offer %>
+  <%= f.label :"提供終了時間" %>
+  <%= f.text_field :end_offer %>
+  <%= f.label :画像 %>
+  <%= f.file_field :profile_image, accept: "image/" %>
   <%= f.submit "編集内容を保存"%>
 <% end %>

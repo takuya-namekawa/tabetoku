@@ -1,5 +1,51 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class="container  pt-3">
+  <div class="row">
+    <div class="col-12">
+      <img src="/assets/top.jpg" class="img-fluid  rounded mx-auto d-block " alt="Responsive image">
+    </div>
+  </div>
+</div>
+<div class="container pt-2 pb-4">
+  <div class="row">
+    <div class="col-12">
+      <img src="/assets/top2.jpg" class="img-fluid  rounded mx-auto d-block " alt="Responsive image">
+        <div class="d-flex justify-content-center align-items-center card-img-overlay">
+          <div class="col">
+            <h4 class="text-center">「まだ美味しく食べられる食品を繋ぐ」</h4>
+                <p class="text-center">
+                  <strong>
+                    食べトク は売り手と買い手を繋ぐ食品ロス レスキューサイトです
+                  </strong><br>
+                    販売期限が近い商品をお得な値段でご予約いただけます<br>
+                    早速 会員登録して食品をレスキューしてみましょう
+                </p>
+                <div class="text-center">
+                  <%= link_to "無料会員登録", new_customer_registration_path ,class: "btn btn-secondary btn-lg "%><br>
+                </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="text-center ">
+        <h2 class="font-weight-bold">新 着 商 品</h2>
+           <% @items.first(5).each do |item| %>
+             <%= link_to  item_path(item.id)  , class: "text-decoration-none" do %>
+             <%= image_tag item.get_profile_image(200, 200) %>
+             <% end %>
+          <% end %>
+          <div class="col">
+            <div class="text-right pt-3 pb-3">
+               <%= link_to "全ての商品を見る>", items_path, class: " text-reset"%>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
 <%= link_to "会員サインアップ" , new_customer_registration_path %>
 <%= link_to "会員ログイン" ,  new_customer_session_path %>
 <%= link_to "会員ログアウト" ,destroy_customer_session_path, method: :delete %>
@@ -8,7 +54,22 @@
 <br>
 <br>
 <br>
+<%= link_to "会員商品一覧ページ" , items_path %>
+<%= link_to "カート" , cart_items_path %>
+<br>
+<br>
 <%= link_to "shopサインアップ" , new_admin_registration_path %>
 <%= link_to "shopログイン" ,   new_admin_session_path %>
 <%= link_to "shopログアウト" , destroy_admin_session_path, method: :delete %>
-<%= link_to "shopマイページ" ,   my_page_admins_path %>
+<%= link_to "shopマイページ" ,   my_page_admin_admins_path %>
+<br>
+<br>
+<br>
+<br>
+<%= link_to "shop商品一覧" ,   admin_items_path %>
+<%= link_to "shop商品新規投稿" , new_admin_item_path %>
+<br>
+<br>
+<%= link_to "shopジャンル一覧" ,    admin_genres_path %>
+
+

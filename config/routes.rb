@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
- 
+
+
+
 # 顧客用
 # URL /customers/sign_in ...
 devise_for :customers,skip: [:passwords], controllers: {
@@ -23,19 +25,26 @@ scope module: :public do
       get 'my_page' => 'customers#show'
     end
   end
-  
-  
+  resources :items, only: [:index, :show]
+  resources :cart_items, only: [:index, :update, :destroy, :create] do
+    collection do
+      delete 'all_destroy'
+    end
+  end
+  get 'reserves/confirm' => 'reserves#confirm', as: 'confirm'
+  get 'reserves/thanks' => 'reserves#thanks', as: 'thanks'
+  resources :reserves, only: [:new, :create, :index, ]
 end
-  
-scope module: :admin do
+
+namespace :admin do
 
   resources :admins, only: [:edit, :update] do
     collection do
       get 'my_page' => 'admins#show'
     end
   end
-  
-  
-end  
-  
+  resources :items, only: [:index, :new, :create, :edit, :update]
+  resources :genres, only: [:index, :create, :edit, :update]
+end
+
 end

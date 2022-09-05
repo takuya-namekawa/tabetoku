@@ -10,7 +10,7 @@ class Admin::AdminsController < ApplicationController
   def update
     @admin = current_admin
     if @admin.update(admin_params)
-      redirect_to my_page_admins_path
+      redirect_to my_page_admin_admins_path
     else
       render :edit
     end
@@ -19,6 +19,6 @@ class Admin::AdminsController < ApplicationController
   private
 
   def admin_params
-    params.require(:admin).permit(:name, :address, :phone_number, :email, :home_page)
+    params.require(:admin).permit(:name, :address, :phone_number, :email, :home_page, :profile_image, :start_offer, :end_offer)
   end
 end

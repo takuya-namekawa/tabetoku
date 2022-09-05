@@ -1,0 +1,22 @@
+<h1>Admin::Items#new</h1>
+<p>Find me in app/views/admin/items/new.html.erb</p>
+<%= form_with model: @item, url: admin_items_path do |f| %>
+  <%= f.label :商品名 %>
+  <%= f.text_field :name, autofocus: true %>
+  <%= f.label :商品説明 %>
+  <%= f.text_area :explanation, autofocus: true %>
+  <%= f.label :提供価格 %>
+  <%= f.text_field :half_price, autofocus: true %>
+  <%= f.label :正規価格 %>
+  <%= f.text_field :price, autofocus: true %>
+  <%= f.label :在庫数%>
+  <%= f.text_field :inventory, autofocus: true %>
+  <%= f.label :ジャンル,class: "col-sm-3 col-form-label" %>
+  <%= f.collection_select :genre_id, Genre.all, :id, :name, class: 'form-control'%>
+  <%= f.label :販売ステータス %>
+  <%= f.radio_button :is_ordered, true, checked: true %>sale
+  <%= f.radio_button :is_ordered, false %>sold-out
+  <%= f.label :画像 %>
+  <%= f.file_field :profile_image, accept: "image/" %>
+  <%= f.submit "商品登録" %>
+<% end %>

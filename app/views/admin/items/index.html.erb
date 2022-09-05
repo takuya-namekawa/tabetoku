@@ -1,0 +1,36 @@
+			<table class="table">
+			<tr class="active" style="font-weight: bold">
+				<td>商品イメージ</td>
+				<td>商品名</td>
+				<td>商品説明</td>
+				<td>商品提供価格</td>
+				<td>商品正規価格</td>
+				<td>在庫数</td>
+				<td>ジャンル</td>
+				<td>販売ステータス</td>
+			</tr>
+			<br>
+	    	<% @items.each do |item| %>
+				<tr>
+					<td><%= image_tag item.get_profile_image(100,100)%></td>
+					<td><%= item.name %></td>
+					<td><%= item.explanation %></td>
+					<td><%= item.half_price %>円</td>
+					<td><%= item.price %>円</td>
+					<td><%= item.inventory %></td>
+					<td><%= item.genre.name %></td>
+					<td>
+						<% if item.is_ordered %>
+            <div class='text-success'>Sale</div>
+            <% else %>
+            <div class="text-secondary">Sold-Out</div>
+            <% end %>
+            <%= link_to "商品を編集する",  edit_admin_item_path(item) %>
+
+					</td>
+				</tr>
+			<% end %>
+			</table>
+
+
+
