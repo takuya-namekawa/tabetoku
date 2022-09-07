@@ -1,42 +1,65 @@
- <h5>支払方法</h5>
-<%= form_with model: @order, url: orders_path do |f| %>
-
- <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
- <%= f.label :payment_method, Order.payment_methods_i18n[:cash] %>
- <br>
- <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
- <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card]%>
- <br>
- <%= f.radio_button :payment_method, Order.payment_methods.key(2) %>
- <%= f.label :payment_method, Order.payment_methods_i18n[:transportation_money]%>
- <br>
-
- <%= f.radio_button :payment_method, Order.payment_methods.key(3) %>
- <%= f.label :payment_method, Order.payment_methods_i18n[:barcode]%>
-
- <%# @reserves.each do |reserve| %>
- <%#= f.fields_for :reserve do |g| %>
-  <%= f.fields_for :reserves do |g| %>
-
-  <%#= g.inspect %><br>
-
-     <% admin = Admin.find_by(id: g.object.admin_id) %>
-     <%#= admin.inspect %>
-     <%= admin.name %>
-     <%= admin.start_offer %>
-     <%= admin.end_offer %>
-     <%= g.hidden_field :cart_data %>
-     <%= g.hidden_field :total_payment %>
-     <%= g.hidden_field :admin_id %>
-     <%= g.select :hour, [*admin.start_offer.delete(":00").to_i..admin.end_offer.delete(":00").to_i] %>：
-     <%= g.select :minutes, [00, 15, 30, 45].map{ |o| format("%02d", o) } %><br>
-   <% end %>
- <%# end %>
-
- <%= f.submit "ご予約を確定する" %>
- <br>
- <%#= f.time_field :visit_time, min: "11:00:00", max: "21:00:00" %>
-
-
- <%#= f.collection_select :visit_time, @offer_time, :id, :name, prompt: "-- 選択してください --", class: 'form-control'%>
-<% end %>
+<div class="container m-5">
+  <div class="row ">
+    <div class="col-3">
+      <h4>お支払い方法</h4>
+        <table class="table ">
+          <%= form_with model: @order, url: orders_path do |f| %>
+          <tr>
+            <td>
+              <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+              <%= f.label :payment_method, Order.payment_methods_i18n[:cash] %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+              <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card]%>
+            <td>
+          </td>
+          </tr>
+          <tr>
+            <td>
+              <%= f.radio_button :payment_method, Order.payment_methods.key(2) %>
+              <%= f.label :payment_method, Order.payment_methods_i18n[:transportation_money]%>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= f.radio_button :payment_method, Order.payment_methods.key(3) %>
+              <%= f.label :payment_method, Order.payment_methods_i18n[:barcode]%>
+            </td>
+          </tr>
+        </table>
+    </div>
+    <div class="col-9">
+       <h4>ご来店時間</h4>
+         <table class="table ">
+           <%= f.fields_for :reserves do |g| %>
+             <% admin = Admin.find_by(id: g.object.admin_id) %>
+             <td><%= image_tag admin.get_profile_image(100,100)%></td>
+             <td>店舗名</td>
+             <td><%= admin.name %></td>
+             <td>提供開始</td>
+             <td><%= admin.start_offer %></td>
+             <td>提供終了</td>
+             <td><%= admin.end_offer %></td>
+             <tr>
+                <td>
+                   ご来店予定時間<br>
+                   <%= g.select :hour, [*admin.start_offer.delete(":00").to_i..admin.end_offer.delete(":00").to_i] %>：
+                   <%= g.select :minutes, [00, 15, 30, 45].map{ |o| format("%02d", o) } %>
+                </td>
+             </tr>
+                <%= g.hidden_field :cart_data %>
+                <%= g.hidden_field :total_payment %>
+                <%= g.hidden_field :admin_id %>
+          <% end %>
+           <tr>
+             <td><%= f.submit "ご予約を確定する" %> </td>
+           </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,6 @@
+<% @reserves.each do |reserve| %>
+  <%= reserve.visit_status %>
+  <% reserve.cart_data_hash.each do |item| %>
+     <%= item[:name] %> × <%= item[:amount] %>
+  <% end %>
+<% end %>
