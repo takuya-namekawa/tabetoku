@@ -5,7 +5,6 @@
   <div class="row">
     <div class="col">
       <table class="table">
-        <tr>
           <thead>
              <tr>
                <th>注文日時</th>
@@ -13,7 +12,7 @@
                <th>合計金額</th>
 
                <th>来店ステータス</th>
-             
+
              </tr>
            </thead>
            <tbody>
@@ -24,9 +23,14 @@
                     <%= item[:name] %> × <%= item[:amount] %>
                     <% end %>
                  </td>
-                  <td><%= reserve.total_payment %></td>
-                  <td<%= reserve.visit %>></td>
-                 <td><%= reserve.visit_status %></td>
+                 <td><%= reserve.total_payment %></td>
+                 <td<%= reserve.visit %>></td>
+                 <td><% if reserve.visit_status %>
+                      <div class='text-secondary'>来店済み</div>
+                      <% else %>
+                      <div class="text-success">来店予定</div>
+                      <% end %>
+                 </td>
                  <td><%= reserve.order.payment_method_i18n[reserve.order.payment_method] %></td>
                  <td><%= link_to "予約の詳細を見る" ,  admin_reserve_path(reserve) %></td>
                </tr>
