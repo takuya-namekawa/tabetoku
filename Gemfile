@@ -58,3 +58,7 @@ gem 'devise'
 gem 'mini_magick'
 gem 'image_processing'
 gem "enum_help"
+
+gem "net-smtp"
+gem "net-pop"
+gem "net-imap"

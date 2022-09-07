@@ -1,9 +1,12 @@
 class Admin::ReservesController < ApplicationController
   def index
-    pp current_admin
-    @reserves = current_admin.reserves
+   
+    @reserves = current_admin.reserves.all
   end
 
   def show
+    @reserve = current_admin.reserves.find(params[:id])
   end
+  
+  
 end
