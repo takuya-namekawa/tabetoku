@@ -31,9 +31,9 @@ scope module: :public do
       delete 'all_destroy'
     end
   end
-  get 'reserves/confirm' => 'reserves#confirm', as: 'confirm'
-  get 'reserves/thanks' => 'reserves#thanks', as: 'thanks'
-  resources :reserves, only: [:new, :create, :index, ]
+  get 'orders/confirm' => 'orders#confirm', as: 'confirm'
+  get 'orders/thanks' => 'orders#thanks', as: 'thanks'
+  resources :orders, only: [:new, :create, :index, ]
 end
 
 namespace :admin do

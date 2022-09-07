@@ -1,11 +1,138 @@
-<h1>Admin::Admins#show</h1>
-<p>Find me in app/views/admin/admins/show.html.erb</p>
-<%= image_tag @admin.get_profile_image(350,350)%>
-<%= @admin.name %>
-<%= @admin.address %>
-<%= @admin.phone_number %>
-<%= @admin.start_offer %>
-<%= @admin.end_offer %>
-<%= @admin.home_page %>
-<%= link_to "会員編集" ,     edit_admin_admin_path(@admin) %>
+<div class="container pt-3">
+  <div class="row pb-3">
+    <div class="col-8">
+      <div class="row">
+        <div class="col-5">
+          <%= image_tag @admin.get_profile_image(320,320)%><br>
+        </div>
+        <div class="col-7">
+          <table class="table table-borderless">
+            <tr>
+              <td><h5>店舗名</h5><%= @admin.name %></td>
+                <td><h5>店舗電話番号</h5><%= @admin.phone_number %></td>
+            </tr>
+            <tr>
+              <td><h5>店舗住所</h5><%= @admin.address %></td>
+              <td><h5>店舗ホームページ</h5><%= @admin.home_page %></td>
+            <tr>
+              <td><h5>商品提供時間</h5><%= @admin.start_offer %></td>
+              <td><h5>商品提供終了時間</h5><%= @admin.end_offer %></td>
+            </tr>
+            <tr>
+              <td><%= link_to "会員編集" , edit_admin_admin_path(@admin) %></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="container pt-3">
+        <h4>カテゴリー新規追加</h4>
+        <%= form_with model: @genre, url: admin_genres_path do |f| %>
+          <div class="row pb-4 pt-5">
+            <%= f.label :name, "カテゴリー名" %>
+          </div>
+          <div class="row pb-5">
+            <%= f.text_field :name, class:'form-control' %>
+          </div>
+          <div class="row pb-5">
+            <%= f.submit '新規登録', class: 'btn btn-success btn-block' %>
+          </div>
+        <% end %>
 
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <h2>商品新規登録</h2>
+    <div class="row">
+      <div class=" col-6">
+        <%= form_with model: @item, url: admin_items_path do |f| %>
+        <form>
+          <div class="form-group row">
+            <%= f.label :商品名,class: "col-sm-3 col-form-label " %>
+            <div class="col-sm-9 pl-4">
+              <%= f.text_field :name, autofocus: true, class:"form-control ",  id:"inputName", placeholder:"商品名"%>
+            </div>
+          </div>
+          <div class="form-group row">
+            <%= f.label :商品説明,class: "col-sm-3 col-form-label " %>
+            <div class="col-sm-9 pl-4">
+              <%= f.text_area :explanation, autofocus: true, class:"form-control", rows: 3, id:"inputName", placeholder:"ここに説明文を記述します"%>
+            </div>
+          </div>
+          <div class="form-group row">
+            <%= f.label :ジャンル,class: "col-sm-3 col-form-label" %>
+            <div class="col-sm-9 pl-4">
+              <%= f.collection_select :genre_id, Genre.all, :id, :name, prompt: "-- 選択してください --", class: 'form-control'%>
+            </div>
+          </div>
+          <div class="form-group row">
+            <%= f.label :正規価格,class: "col-sm-3 col-form-label " %>
+            <div class="col-sm-9 pl-4 ">
+              <div class="form-check-inline">
+              <%= f.text_field :price, autofocus: true, class:"form-control ", id:"inputName"%> <label class="form-check-label" for="inlineRadio3">円</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <%= f.label :提供価格,class: "col-sm-3 col-form-label " %>
+            <div class="col-sm-9 pl-4 ">
+              <div class="form-check-inline">
+                <%= f.text_field :half_price, autofocus: true, class:"form-control ", id:"inputName"%> <label class="form-check-label" for="inlineRadio3">円</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <%= f.label :在庫数,class: "col-sm-3 col-form-label " %>
+            <div class="col-sm-9 pl-4 ">
+              <div class="form-check-inline">
+                <%= f.text_field :inventory, autofocus: true, class:"form-control ", id:"inputName"%> <label class="form-check-label" for="inlineRadio3"></label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row ">
+            <%= f.label :販売ステータス,class: "col-sm-3 col-form-label " %>
+            <div class="col-sm-9 pl-4">
+              <div class="form-check form-check-inline">
+                <%= f.radio_button :is_ordered, true, checked: true %>Sale
+             </div>
+             <div class="form-check form-check-inline">
+               <%= f.radio_button :is_ordered, false %>Sold-Out
+             </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <%= f.label :商品画像 ,class: "col-sm-3 col-form-label " %>
+            <%= f.file_field :profile_image, accept: "image/" ,class:"col-sm-8 pl-4" %>
+          </div>
+          <div class="text-center">
+            <%= f.submit "商品を登録する" ,class: "btn btn-success " %>
+          </div>
+        </form>
+        <% end %>
+      </div>
+      <div class="col-6">
+        <div class="container">
+          <table class="table">
+            <thead class="thead table-secondary">
+              <tr>
+                <th>カテゴリー一覧</th>
+                <th colspan="3"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @genres.each do |genre| %>
+              <tr>
+                <th><%= genre.name %></th>
+                <th><%= link_to '編集する',  edit_admin_genre_path(genre), class: 'btn-sm btn-success' %></th>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+</div>

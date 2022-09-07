@@ -1,6 +1,9 @@
 class Admin::AdminsController < ApplicationController
   def show
     @admin = current_admin
+    @item = Item.new
+    @genre = Genre.new
+    @genres = Genre.all
   end
 
   def edit

@@ -4,4 +4,21 @@
 <%= @customer.name_kana %>
 <%= @customer.phone_number %>
 <%= @customer.email %>
-<%= link_to "会員編集" ,    edit_customer_path(@customer) %>
+<%= link_to "会員編集" ,    edit_customer_path(@customer) %><br>
+<% @orders.each do |order| %>
+
+<ol>
+  <li><%= order.created_at %></li>
+  <li>
+    <ul>
+      <% order.reserves.each do |reserve| %>
+        <li><%= reserve.visit %></li>
+        <% reserve.cart_data_hash.each do |item| %>
+          <li><%= item[:name] %> × <%= item[:amount] %></li>
+        <% end %>
+      <% end %>
+    </ul>
+  </li>
+</ol>
+
+<% end %>

@@ -1,6 +1,6 @@
  ja:
     enums:
-      reserve:
+      order:
         payment_method:
           cash: "現金"
           credit_card: "クレジットカード"

@@ -6,12 +6,11 @@ class Public::CartItemsController < ApplicationController
     cart_item.update(amount_status: true)  #indexページへアクセスする度に在庫数が減るのを防ぐ処理
     cart_item.item.update(inventory: (cart_item.item.inventory - cart_item.amount))  #買い物カゴに入っている数量から商品の在庫数を引く
     end
- 
+
     @total_price = 0
       @cart_items.each do |cart_item|
       @total_price += (cart_item.item.half_price).floor * cart_item.amount
     end
-
   end
 
   end

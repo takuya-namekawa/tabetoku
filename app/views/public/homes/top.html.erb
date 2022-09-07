@@ -46,30 +46,10 @@
     </div>
   </div>
 </div>
-<%= link_to "会員サインアップ" , new_customer_registration_path %>
-<%= link_to "会員ログイン" ,  new_customer_session_path %>
-<%= link_to "会員ログアウト" ,destroy_customer_session_path, method: :delete %>
-<%= link_to "会員マイページ" ,   my_page_customers_path %>
-<br>
-<br>
-<br>
-<br>
-<%= link_to "会員商品一覧ページ" , items_path %>
 <%= link_to "カート" , cart_items_path %>
 <br>
 <br>
 <%= link_to "shopサインアップ" , new_admin_registration_path %>
 <%= link_to "shopログイン" ,   new_admin_session_path %>
 <%= link_to "shopログアウト" , destroy_admin_session_path, method: :delete %>
-<%= link_to "shopマイページ" ,   my_page_admin_admins_path %>
-<br>
-<br>
-<br>
-<br>
-<%= link_to "shop商品一覧" ,   admin_items_path %>
-<%= link_to "shop商品新規投稿" , new_admin_item_path %>
-<br>
-<br>
-<%= link_to "shopジャンル一覧" ,    admin_genres_path %>
-
 

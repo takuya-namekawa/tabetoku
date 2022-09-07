@@ -1,44 +1,42 @@
-<h2>Sign up</h2>
-
- <%= form_with model: @admin, url: admin_registration_path do |f| %>
-  <%= render "admin/shared/error_messages", resource: resource %>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
-  </div>
-
-
-  <div class="field">
-    <%= f.label :phone_number %><br />
-    <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "admin/shared/links" %>
+<div class="containar">
+      <div class="row no-gutters">
+        <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto text-center shadow rounded px-0 my-5">
+          <h5 class="text-dark bg-light py-4 mb-0">店舗登録</h5>
+            <div class="form-body p-4">
+              <%= form_with model: @admin, url: admin_registration_path do |f| %>
+              <%= render "public/shared/error_messages", resource: resource %>
+              <div class="text-left">
+                <%= f.label :名前 %>
+                <%= f.text_field :name, autofocus: true, class:"form-control", id:"inputName", placeholder:"名前"%>
+              </div>
+              <div class="text-left">
+                <%= f.label :店舗住所 %>
+                <%= f.text_field :address, autofocus: true, class:"form-control", id:"inputName", placeholder:"店舗住所"%>
+              </div>
+              <div class="text-left">
+                <%= f.label :電話番号 %>
+                <%= f.text_field :phone_number, autofocus: true, class:"form-control", id:"inputName", placeholder:"電話番号"%>
+              </div>
+              <div class="text-left">
+                <%= f.label :メールアドレス %>
+                <%= f.text_field :email,autofocus: true, class: 'form-control', placeholder: 'メールアドレス *', id: 'email'  %>
+              </div>
+              <div class="text-left">
+                <%= f.label :password %>
+                <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> characters minimum)</em>
+                <% end %><br />
+                <%= f.password_field :password, autocomplete: "new-password" , class: 'form-control'%>
+              </div>
+              <div class="text-left">
+                <%= f.label :password_confirmation %><br />
+                <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
+              </div>
+              <div class="actions">
+                <%= f.submit "店舗登録" ,class: "btn btn-success"%>
+              </div>
+                <% end %>
+            </div>
+        </div>
+      </div>
+</div>
