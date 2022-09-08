@@ -24,7 +24,9 @@ scope module: :public do
       get 'my_page' => 'customers#show'
     end
   end
-  resources :items, only: [:index, :show]
+  resources :items, only: [:index, :show] do
+    get '/genre_items' => 'items#genre_items'
+  end
   resources :cart_items, only: [:index, :update, :destroy, :create] do
     collection do
       delete 'all_destroy'

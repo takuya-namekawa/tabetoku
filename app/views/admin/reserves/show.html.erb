@@ -2,19 +2,19 @@
   <h2 class="text-center pb-4 pt-3">商品予約詳細</h2>
 </div>
 <div class= "container">
-<会員名><br>
-<ご来店予定時間><br>
-<お支払い方法><br>
+<%= @reserve.order.customer.name %><br>
+<%= @reserve.visit.strftime("%Y年 %-m月 %-d日 %H時 %M分")   %><br>
+<%= Order.payment_methods_i18n[@reserve.order.payment_method] %><br>
 <%= form_with model: @reserve, url: admin_reserve_path do |f| %>
  <div class="form-group row ">
    <form>
       <%= f.label :来店ステータス,class: "col-sm-3 col-form-label " %>
         <div class="col-sm-9 pl-4">
           <div class="form-check form-check-inline">
-            <%= f.radio_button :is_ordered, false , checked: true %>来店予定
+            <%= f.radio_button :visit_status, false , checked: true %>来店予定
          </div>
          <div class="form-check form-check-inline">
-           <%= f.radio_button :is_ordered, true %>来店済み
+           <%= f.radio_button :visit_status, true %>来店済み
           </div>
           <div>
             <%= f.submit "来店済みに変更する" ,class: "btn btn-success " %>
@@ -24,14 +24,14 @@
   </div>
 <% end %>
 </div>
-<p class="text-center">※商品をお渡しの際は商品名と個数をチェックBOXで確認する事をお勧め致します</p>
+<p class="text-center font-weight-bold">※商品をお渡しの際は商品名と個数をチェックBOXで確認する事をお勧め致します</p>
 <div class="container">
     <div class="row">
         <div class="col">
           <table class="table">
-                  <% @reserve.each do |reserve| %>
+
                       <tr>
-                        <% reserve.cart_data_hash.each do |item| %>
+                        <% @reserve.cart_data_hash.each do |item| %>
                           <td><div class="form-check"><input class="form-check-input position-static" type="checkbox">
                           <%= item[:name]%></div>
                           </td>
@@ -39,9 +39,9 @@
                           <td><div class="form-check"><input class="form-check-input position-static" type="checkbox">
                           <%= item[:amount] %>個</td>
                          <% end %>
-                        <td>合計金額<%= reserve.total_payment %>円</td>
+                        <td>合計金額<%= @reserve.total_payment %>円</td>
                       </tr>
-                  <% end %>
+
            </table>
         </div>
     </div>

@@ -6,7 +6,7 @@ class Public::OrdersController < ApplicationController
     @cart_items = current_customer.cart_items.joins(:item)
     admin_ids = current_customer.items.pluck(:admin_id).uniq.compact_blank
     admin_ids.each do |admin_id|
-    p cart_items = @cart_items.where(items: { admin_id: admin_id }).select("items.*, cart_items.*").pluck(:id, :amount, :half_price, :name)
+    cart_items = @cart_items.where(items: { admin_id: admin_id }).select("items.*, cart_items.*").pluck(:id, :amount, :half_price, :name)
       total_payment = cart_items.map{|o| o[1] * o[2] }.sum
       cart_data = cart_items.map{ |o| {id: o[0], amount: o[1], half_price: o[2], name: o[3]}}
       @order.reserves.build(admin_id: admin_id, total_payment: total_payment, cart_data: cart_data)

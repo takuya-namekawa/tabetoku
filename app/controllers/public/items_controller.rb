@@ -1,6 +1,8 @@
 class Public::ItemsController < ApplicationController
   def index
     @items = Item.all
+    @genres = Genre.all
+
   end
 
   def show
@@ -9,8 +11,14 @@ class Public::ItemsController < ApplicationController
     @item_inventory = []  #item_inventoryとして定義し商品の在庫数からしかカートに入れられないようにする処理
     for i in 1..@item.inventory
       @item_inventory.push(i)
-    end  
+    end
   end
+  
+  def genre_items
+    @genres = Genre.all
+    @genre = Genre.find(params[:item_id])
+    @genre_items = @genre.items.all
+  end  
 
 
   def item_params

@@ -5,15 +5,15 @@ class Admin::ReservesController < ApplicationController
   end
 
   def show
-    @reserve = current_admin.reserves.find(params[:id])
-    @reserve = current_admin.reserves
-    
-   
+    #@reserve = current_admin.reserves.find(params[:id])
+    @reserve = Reserve.find(params[:id])
+
   end
 
   def update
     # @reserve = current_admin.find(admin_id: admin_id)
     @reserve = Reserve.find(params[:id])
+  
     @reserve.update(reserve_params)
     redirect_to admin_reserves_path
   end
@@ -21,7 +21,7 @@ class Admin::ReservesController < ApplicationController
   private
 
   def reserve_params
-    params.require(:reserve).permit( :visit_status)
+    params.require(:reserve).permit( :visit_status )
   end
 
 end
