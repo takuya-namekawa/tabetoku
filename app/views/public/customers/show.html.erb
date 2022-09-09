@@ -2,17 +2,62 @@
   <div class="row ">
     <div class="col-6">
       <h4>会員情報</h4>
-        <table class="table ">
-          <%= @customer.name %>
-          <%= @customer.name_kana %>
-          <%= @customer.phone_number %>
-          <%= @customer.email %>
-          <%= link_to "会員編集" ,    edit_customer_path(@customer) %><br>
+        <table class="table bg-white ">
+          <tr>
+            <td>会員名</td>
+            <td><%= @customer.name %></td>
+          </tr>
+          <tr>
+            <td>フリガナ</td>
+            <td><%= @customer.name_kana %></td>
+          </tr>
+          <tr>
+            <td>電話番号</td>
+            <td><%= @customer.phone_number %></td>
+          </tr>
+          <tr>
+            <td>メールアドレス</td>
+            <td><%= @customer.email %></td>
+          </tr>
+          <tr>
+            <td><%= link_to "会員編集を編集する" , edit_customer_path(@customer) %></td>
+          </tr>
         </table>
     </div>
-    <div class="col-6">
-       <h4>仮</h4>
-     
+    <div class="col-12">
+       <h4>予約一覧</h4>
+         <table class="table bg-white text-nowrap">
+            <thead>
+             <tr>
+               <th>予約日時</th>
+               <th>店舗名</th>
+               <th>来店ステータス</th>
+               <th>合計金額(税込)</th>
+               <th>商品名×注文個数</th>
+             </tr>
+           </thead>
+           <tbody>
+              <% @orders.each do |order| %>
+                  <% order.reserves.each do |reserve| %>
+                    <tr>
+                      <td><%= reserve.created_at.strftime("%Y年 %-m月 %-d日 %H時 %M分")  %></td>
+                      <td><%= reserve.admin.name %></td>
+
+                      <td><% if reserve.visit_status %>
+                        <div class='text-secondary'>来店済み </div>
+                        <% else %>
+                        <div class="text-success">来店予定 </div>
+                        <% end %>
+                      </td>
+                      <td><%= reserve.total_payment %>円</td>
+                      <% reserve.cart_data_hash.each do |item| %>
+                        <td><%= item[:name] %> × <%= item[:amount] %></td>
+                      <% end %>
+                    </tr>
+                <% end %>
+              <% end %>
+           </tbody>
+         </table>
     </div>
   </div>
 </div>

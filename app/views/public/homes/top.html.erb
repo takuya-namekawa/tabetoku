@@ -5,45 +5,44 @@
     </div>
   </div>
 </div>
-<div class="container pt-2 pb-4">
+
+<div class="container mt-5 mb-2">
   <div class="row">
-    <div class="col-12">
-      <img src="/assets/top2.jpg" class="img-fluid  rounded mx-auto d-block " alt="Responsive image">
-        <div class="d-flex justify-content-center align-items-center card-img-overlay">
-          <div class="col">
-            <h4 class="text-center">「まだ美味しく食べられる食品を繋ぐ」</h4>
-                <p class="text-center">
-                  <strong>
-                    食べトク は売り手と買い手を繋ぐ食品ロス レスキューサイトです
-                  </strong><br>
-                    販売期限が近い商品をお得な値段でご予約いただけます<br>
-                    早速 会員登録して食品をレスキューしてみましょう
-                </p>
-                <div class="text-center">
-                  <%= link_to "無料会員登録", new_customer_registration_path ,class: "btn btn-secondary btn-lg "%><br>
-                </div>
-          </div>
-        </div>
+    <div class="col-3">
+       <p class="text-center font-weight-bold border-bottom  border-dark " style="color: #6e470c; ">
+      ジャンルから探す</p>
+      <div class="card">
+
+        <% @genres.each do |genre| %>
+
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item text-center" style="color: #6e470c; "> <%= link_to  item_genre_items_path(genre) , class: "text-decoration-none text-reset" do %>
+     <i class="fas fa-tag"></i></i> <%= genre.name %>
+        <% end %></li>
+
+        </ul>
+         <% end %>
+      </div>
+
     </div>
-  </div>
-</div>
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <div class="text-center ">
-        <h2 class="font-weight-bold">新 着 商 品</h2>
-           <% @items.first(5).each do |item| %>
-             <%= link_to  item_path(item.id)  , class: "text-decoration-none" do %>
-             <%= image_tag item.get_profile_image(200, 200) %>
-             <% end %>
-          <% end %>
-          <div class="col">
+    <div class="col-9 text-center">
+      <p class=" font-weight-bold border-bottom  border-dark " style="color: #6e470c; ">
+      新しく登録された商品</p>
+
+
+    <% @items.first(10).each do |item| %>
+       <%= link_to  item_path(item.id)  , class: "text-decoration-none" do %>
+       <%= image_tag item.get_profile_image(150, 150) %>
+       <% end %>
+
+
+    <% end %>
+ <div class="col">
             <div class="text-right pt-3 pb-3">
-               <%= link_to "全ての商品を見る>", items_path, class: " text-reset"%>
+               <%= link_to "全ての商品を見る →", items_path, class: " text-reset"%>
             </div>
           </div>
-      </div>
-    </div>
+     </div>
   </div>
 </div>
 

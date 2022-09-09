@@ -27,11 +27,13 @@
                 <%= f.hidden_field :item_id, value: @item.id %>
                 <%= f.hidden_field :customer_id, :value => current_customer.id %>
                 <%= f.select :amount,@item_inventory,{include_blank: '個数選択'},required:true%>&emsp;
-                <%= f.submit 'カートに入れる' ,class: 'btn btn-success btn-sm'%><% end %>
+                <%= f.submit 'カートに入れる' ,class: 'btn btn-danger btn-sm'%><% end %>
                <% else %>
                  <h4>sold-out</h4>
                <% end %>
-               <%= link_to "カートに戻る",   cart_items_path %>
+               <%= link_to cart_items_path , class: "text-reset" do %>
+               <i class="fas fa-shopping-cart "></i> カートに戻る
+               <% end %>
             </td>
           </tr>
         </table>

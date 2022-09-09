@@ -12,7 +12,7 @@ class Public::CartItemsController < ApplicationController
       @total_price += (cart_item.item.half_price).floor * cart_item.amount
     end
   end
-
+  @items = Item.all.order(created_at: :desc)
   end
 
   def create
