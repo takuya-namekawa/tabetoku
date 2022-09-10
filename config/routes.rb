@@ -26,15 +26,22 @@ scope module: :public do
   end
   resources :items, only: [:index, :show] do
     get '/genre_items' => 'items#genre_items'
+    resources :item_comments, only: [:create, :destroy]
   end
   resources :cart_items, only: [:index, :update, :destroy, :create] do
     collection do
       delete 'all_destroy'
     end
   end
+
   get 'orders/confirm' => 'orders#confirm', as: 'confirm'
   get 'orders/thanks' => 'orders#thanks', as: 'thanks'
   resources :orders, only: [:new, :create, :index, ]
+  resources :admins, only: [:show] do
+    collection do
+     get 'shops' => 'admins#index'
+    end
+  end
 end
 
 namespace :admin do
@@ -47,6 +54,7 @@ namespace :admin do
   resources :items, only: [:index, :new, :create, :edit, :update]
   resources :genres, only: [:index, :create, :edit, :update]
   resources :reserves, only: [:index, :show, :create, :update]
+  resources :customers, only: [:edit, :show, :update]
 end
 
 end

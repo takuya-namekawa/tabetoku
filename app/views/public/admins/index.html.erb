@@ -1,0 +1,55 @@
+<div class="container mt-4 mb-4">
+  <div class="row">
+    <div class="col-12">
+      <h4 class="text-center font-weight-bold" style="color: #6e470c; ">
+      お店一覧</h4>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <p class="text-center font-weight-bold border-bottom  border-dark " style="color: #6e470c; ">
+      ジャンルから探す</p>
+ <!--ここから------>
+      <div class="card">
+        <% @genres.each do |genre| %>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item text-center" style="color: #6e470c; "> <%= link_to  item_genre_items_path(genre) , class: "text-decoration-none text-reset" do %>
+          <i class="fas fa-tag"></i></i> <%= genre.name %>
+          <% end %></li>
+        </ul>
+        <% end %>
+      </div>
+<!--ここまで、あとでテンプレ-->
+    </div>
+    <div class="col-9">
+      <p class="text-center font-weight-bold border-bottom  border-dark " style="color: #6e470c; ">
+      新着順(<%= @admins.count %>)件</p>
+      <div class="table">
+        <tbody>
+          <% @admins.each do |admin| %>
+            <tr>
+              <td>
+               <%= link_to  admin_path(admin) , class: "text-decoration-none" do %>
+               <%= image_tag admin.get_profile_image(80, 80), class: "mr-3 mb-2 "%>
+               <% end %>
+              </td>
+              <td>
+                <%= link_to  admin_path(admin) , class: "text-reset" do %>
+                <%= admin.name %>
+                <% end %>
+              </td>
+              <td><%= admin.address %></td>
+              <td>Tel:<%= admin.phone_number %></td>
+              <td>予約受付時間<%= admin.start_offer %> ～</td>
+              <td><%= admin.end_offer %>迄</td><br>
+            </tr>
+          <% end %>
+        </tbody>
+      </div>
+    </div>
+  </div>
+</div>
+
+

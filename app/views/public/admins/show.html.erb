@@ -1,0 +1,33 @@
+
+<div class="container m-5">
+  <div class="row">
+    <div class="text-center col-sm-8">
+      <%= image_tag @admin.get_profile_image(400,400)%>
+    </div>
+    <div class="col-sm-4">
+      <table class="table table-borderless">
+
+         <tr>
+            <td><h3><%= @admin.name %></h3></td>
+         </tr>
+         <tr>
+            <td><h6><%= @admin.address %></h6></td>
+         </tr>
+         <tr>
+            <td><h3><%= @admin.phone_number %></h3></td>
+         </tr>
+         <tr>
+            <td><%= @admin.home_page %></td>
+         </tr>
+         <tr>
+            <td><%= @admin.start_offer %></td>
+         </tr>
+         <tr>
+            <td><%= @admin.end_offer %></td>
+         </tr>
+
+        </table>
+      </div>
+  </div>
+</div>
+

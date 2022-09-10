@@ -54,7 +54,7 @@
              <tr>
                 <td class=" font-weight-bold ">
                    ご来店予定時間<br>
-                   <%= g.select :hour, [*admin.start_offer.delete(":00").to_i..admin.end_offer.delete(":00").to_i] %> ：
+                   <%= g.select :hour, [*admin.start_offer.gsub("/:00/","").to_i..admin.end_offer.gsub("/:00/","").to_i] %>：
                    <%= g.select :minutes, [00, 15, 30, 45].map{ |o| format("%02d", o) } %>
                 </td>
              </tr>

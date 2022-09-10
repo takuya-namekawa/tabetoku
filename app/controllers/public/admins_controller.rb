@@ -1,9 +1,7 @@
-class Public::HomesController < ApplicationController
-
-  def top
-    @items = Item.all.order(created_at: :desc)
-    @genres = Genre.all
+class Public::AdminsController < ApplicationController
+  def index
     @admins = Admin.all
+    @genres = Genre.all
   end
   
   def genre_items
@@ -12,4 +10,7 @@ class Public::HomesController < ApplicationController
     @genre_items = @genre.items.all
   end  
 
+  def show
+    @admin = Admin.find(params[:id])
+  end
 end

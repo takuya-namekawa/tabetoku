@@ -55,8 +55,8 @@
   <% else %>
       	<div class="container  bg-white m-5 pt-5 pb-5 border border-5">
       		<h5 class="text-center mb3 ">カートに商品が入っていません</h5>
-      		<div class="text-center pt-3">
-      			<%= link_to "商品一覧を見る", items_path %>
+      		<div class="text-center pt-3 ">
+      			<%= link_to "商品一覧を見る", items_path , class: "text-reset"%>
       		</div>
   	    </div>
 <% end %>
@@ -66,11 +66,14 @@
     <div class="col-12">
       <p class="text-center font-weight-bold border-bottom  border-dark " style="color: #6e470c; "><i class="fas fa-shopping-cart "></i>
       新しく登録された商品</p>
-    </div>
+
     <% @items.first(10).each do |item| %>
-       <%= link_to  item_path(item.id)  , class: "text-decoration-none" do %>
-       <%= image_tag item.get_profile_image(100, 100) , class: "mr-3"%>
+
+       <%= link_to  item_path(item.id)  , class: "text-decoration-none " do %>
+       <%= image_tag item.get_profile_image(100, 100) , class: "mr-1"%>
        <% end %>
+
     <% end %>
+    </div>
   </div>
 </div>

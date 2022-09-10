@@ -1,7 +1,8 @@
 class Item < ApplicationRecord
   belongs_to :admin ,optional: true
   belongs_to :genre
-  has_many :cart_items, dependent: :destroy      
+  has_many :cart_items, dependent: :destroy
+  has_many :item_comments, dependent: :destroy
   has_one_attached :profile_image
 
   def get_profile_image(width, height)
