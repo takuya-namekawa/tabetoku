@@ -1,40 +1,62 @@
-
-<div class="container m-5">
+<div class="container mt-4 mb-3">
   <div class="row">
-    <div class="text-center col-sm-8">
-      <%= image_tag @admin.get_profile_image(400,400)%>
+    <div class="col-12">
+      <h4 class="text-center font-weight-bold" style="color: #6e470c; ">
+      お店紹介</h4>
     </div>
-    <div class="col-sm-4">
-      <table class="table table-borderless">
-
-         <tr>
-            <td><h3><%= @admin.name %></h3></td>
-         </tr>
-         <tr>
-            <td><h6><%= @admin.address %></h6></td>
-         </tr>
-         <tr>
-            <td><h3><%= @admin.phone_number %></h3></td>
-         </tr>
-         <tr>
-            <td><%= @admin.home_page %></td>
-         </tr>
-         <tr>
-            <td><%= @admin.start_offer %></td>
-         </tr>
-         <tr>
-            <td><%= @admin.end_offer %></td>
-         </tr>
-
-        </table>
-      </div>
   </div>
 </div>
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-sm-5 ">
+      <%= image_tag @admin.get_profile_image(400,400), class: 'img-fluid mb-3'%>
+        <h6 class=" font-weight-bold" style="color: #6e470c; ">
+          <%= render 'public/favorites/favorite', admin: @admin %>
+        </h6>
+    </div>
+    <div class="col-sm-7">
+      <table class="table ">
+         <tr>
+            <td class="w-50"><p class="font-weight-bold">店舗名</p></td>
+            <td><%= @admin.name %></td>
+         </tr>
+         <tr>
+            <td class="w-50"><p class="font-weight-bold">住所 </p> </td>
+           <td><%= @admin.address %></td>
+         </tr>
+         <tr>
+            <td class="w-50"><p class="font-weight-bold">電話番号</p></td>
+             <td><%= @admin.phone_number %>
+         </tr>
+         <tr>
+             <td class="w-50"><p class="font-weight-bold">店舗ホームページ</p></td>
+               <td><%= @admin.home_page %></td>
+         </tr>
+         <tr>
+             <td class="w-50"><p class="font-weight-bold">商品の提供開始</p> </td>
+              <td><%= @admin.start_offer %>時</td>
+         </tr>
+         <tr>
+             <td class="w-50"><p class="font-weight-bold">商品の提供終了</p></td>
+              <td><%= @admin.end_offer %>時</td>
 
+
+
+         </tr>
+        </table>
+      </div>
+
+
+
+<div class="container mt-2 mb-2">
+  <div class="row">
+    <div class="col-12">
+      <h4 class="text-center font-weight-bold border-bottom  border-dark" style="color: #6e470c; ">
+      MAP</h4>
+    </div>
+  </div>
+</div>
 <div id="map"></div>
-
-<%= render 'public/favorites/favorite', admin: @admin %>
-
 <script type="text/javascript">
      function initMap() {
        var test = {lat: <%= @admin.latitude %>, lng: <%= @admin.longitude %>};
@@ -62,7 +84,11 @@
              src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
    </script>
    <style type="text/css">
-     #map { height: 200px;
-           width: 70%;}
+     #map { height: 150px;
+           width: 100%;}
    </style>
    <div id="map"></div>
+</div>
+
+    </div>
+</div>

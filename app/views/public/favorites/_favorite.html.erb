@@ -1,13 +1,13 @@
 <div id="favorite_<%= admin.id %>">
   <% if !Favorite.exists?(customer: current_customer, admin_id: admin.id) %>
-      <%= link_to admin_favorites_path(admin), method: :post,  remote: true ,class: "favorite-btn favorite-post" do %>
+      <%= link_to admin_favorites_path(admin), method: :post,  remote: true ,class: "text-reset" do %>
         <i class="fas fa-star"></i> お気に入り追加
-      <% end %>
-         お気に入り登録数<%= admin.favorites.length %>
+      <% end %><br>
+        (<%= admin.favorites.length %>名の会員がお気に入りリストに登録しています)
     <% else %>
-      <%= link_to admin_favorites_path(admin), method: :delete, remote: true ,class: "favorite-btn favorite-delete" do %>
+      <%= link_to admin_favorites_path(admin), method: :delete, remote: true ,class:"text-reset" do %>
         <i class="far fa-star"></i> お気に入り解除
-      <% end %>
-      お気に入り登録数<%= admin.favorites.length %>
+      <% end %><br>
+        (<%= admin.favorites.length %>名の会員がお気に入りリストに登録しています)
   <% end %>
 </div>

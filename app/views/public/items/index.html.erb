@@ -7,20 +7,7 @@
   </div>
 </div>
 <div class="container ">
-  <div class="input-group-lg justify-content-center">
-    <div class="row justify-content-center">
-      <dic class="col-6  ">
-        <%= search_form_for @search , url: search_items_path do |f| %>
-            <div class=" d-md-flex ">
-              <%= f.search_field :name_or_admin_name_or_genre_name_cont , class:"form-control shadow-sm border.border-5", placeholder:"お店、商品名、ジャンルから探す"%>
-              <%= button_tag :type => "submit", :class =>"btn btn-light shadow-sm border border-secondary" do %>
-                <i class="fa fa-search"></i>
-              <% end %>
-            </div>
-        <% end %>
-      </dic>
-    </div>
-  </div>
+  <%= render 'all_search' ,  search:  @search %>
  </div>
 <div class="container mt-4">
   <div class="row">
