@@ -1,7 +1,6 @@
 <div class="container text-center pb-3">
   <div class="row">
     <div class="col">
-
       <% genres.each do |genre| %>
         <%= link_to  item_genre_items_path(genre) , class: "text-decoration-none text-reset" do %>
         <span class="border border-dark bg-white pr-2 pl-2 ml-2"><i class="fas fa-tags pr-1"></i><%= genre.name %></span>

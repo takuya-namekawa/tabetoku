@@ -1,4 +1,6 @@
 class Public::ItemsController < ApplicationController
+  before_action :set_search, only: [:index, :search]
+
   def index
     @items = Item.all
     @genres = Genre.all
@@ -14,12 +16,22 @@ class Public::ItemsController < ApplicationController
     end
     @item_comment = ItemComment.new
   end
-  
+
   def genre_items
     @genres = Genre.all
     @genre = Genre.find(params[:item_id])
     @genre_items = @genre.items.all
-  end  
+  end
+
+  def search
+    @results = @search.result
+  end
+
+  private
+
+  def set_search
+    @search = Item.ransack(params[:search])
+  end
 
 
   def item_params

@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-
-
 # 顧客用
 # URL /customers/sign_in ...
 devise_for :customers,skip: [:passwords], controllers: {
@@ -15,8 +13,6 @@ devise_for :admins,skip: [:passwords], controllers: {
   sessions: "admin/sessions"
 }
 
-
-
 scope module: :public do
   root to: 'homes#top'
   resources :customers, only: [:edit, :update] do
@@ -27,6 +23,9 @@ scope module: :public do
   resources :items, only: [:index, :show] do
     get '/genre_items' => 'items#genre_items'
     resources :item_comments, only: [:create, :destroy]
+      collection do
+        get 'search'
+      end  
   end
   resources :cart_items, only: [:index, :update, :destroy, :create] do
     collection do
