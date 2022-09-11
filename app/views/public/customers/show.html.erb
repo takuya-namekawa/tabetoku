@@ -1,36 +1,82 @@
+<div class="container mt-4 mb-3">
+  <div class="row">
+    <div class="col-12">
+      <h4 class="text-center font-weight-bold" style="color: #6e470c; ">
+      マイページ</h4>
+    </div>
+  </div>
+</div>
 <div class="container m-5">
   <div class="row ">
-    <div class="col-6">
-      <h4>会員情報</h4>
-        <table class="table bg-white ">
+    <div class="col-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <p class="font-weight-bold border-bottom  border-dark" style="color: #6e470c; ">
+            会員情報<p>
+          </div>
+        </div>
+      </div>
+        <table class="table ">
           <tr>
-            <td>会員名</td>
+            <td class="font-weight-bold">会員名</td>
             <td><%= @customer.name %></td>
           </tr>
           <tr>
-            <td>フリガナ</td>
+            <td class="font-weight-bold">フリガナ</td>
             <td><%= @customer.name_kana %></td>
           </tr>
           <tr>
-            <td>電話番号</td>
+            <td class="font-weight-bold">電話番号</td>
             <td><%= @customer.phone_number %></td>
           </tr>
           <tr>
-            <td>メールアドレス</td>
+            <td class="font-weight-bold">メールアドレス</td>
             <td><%= @customer.email %></td>
           </tr>
           <tr>
-            <td><%= link_to "会員編集を編集する" , edit_customer_path(@customer) %></td>
+            <td class="font-weight-bold"><%= link_to "会員編集を編集する" , edit_customer_path(@customer) , class: " text-reset"%></td>
           </tr>
         </table>
     </div>
+    <div class="col-7">
+       <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <p class="font-weight-bold border-bottom  border-dark" style="color: #6e470c; ">
+            <i class="fas fa-star"></i> お気に入りのお店<p>
+          </div>
+        </div>
+      </div>
+        <table class="table">
+            <tr>
+              <% if @favorite_list.present? %>
+                <%  @favorite_list.each do |admin| %>
+                  <td>
+                    <%= image_tag admin.get_profile_image(80,80) %><br>
+                    <p class="font-weight-bold"><%= admin.name %></p>
+                  </td>
+                <% end %>
+              <% end %>
+            </tr>
+        </table>
+    </div>
+    </div>
     <div class="col-12">
-       <h4>予約一覧</h4>
-         <table class="table bg-white text-nowrap">
+       <div class="container mt-4">
+        <div class="row">
+          <div class="col-12">
+            <p class="font-weight-bold border-bottom  border-dark" style="color: #6e470c; ">
+            予約一覧<p>
+          </div>
+        </div>
+      </div>
+         <table class="table  text-nowrap">
             <thead>
              <tr>
                <th>予約日時</th>
                <th>店舗名</th>
+               <th>ご来店予定時間</th>
                <th>来店ステータス</th>
                <th>合計金額(税込)</th>
                <th>商品名×注文個数</th>
@@ -42,7 +88,7 @@
                     <tr>
                       <td><%= reserve.created_at.strftime("%Y年 %-m月 %-d日 %H時 %M分")  %></td>
                       <td><%= reserve.admin.name %></td>
-
+                      <td><%= reserve.visit.strftime("%Y年 %-m月 %-d日 %H時 %M分")  %></td>
                       <td><% if reserve.visit_status %>
                         <div class='text-secondary'>来店済み </div>
                         <% else %>
@@ -61,3 +107,4 @@
     </div>
   </div>
 </div>
+

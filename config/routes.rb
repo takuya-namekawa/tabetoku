@@ -18,6 +18,7 @@ scope module: :public do
   resources :customers, only: [:edit, :update] do
     collection do
       get 'my_page' => 'customers#show'
+      get 'favorites'
     end
   end
   resources :items, only: [:index, :show] do
@@ -37,6 +38,8 @@ scope module: :public do
   get 'orders/thanks' => 'orders#thanks', as: 'thanks'
   resources :orders, only: [:new, :create, :index, ]
   resources :admins, only: [:show] do
+    resource :favorites, only: [:create, :destroy]
+  
     collection do
      get 'shops' => 'admins#index'
     end

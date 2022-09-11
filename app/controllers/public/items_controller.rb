@@ -30,7 +30,7 @@ class Public::ItemsController < ApplicationController
   private
 
   def set_search
-    @search = Item.ransack(params[:search])
+    @search = Item.ransack(params[:q])
   end
 
 

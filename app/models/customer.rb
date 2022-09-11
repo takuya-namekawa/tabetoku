@@ -7,4 +7,5 @@ class Customer < ApplicationRecord
   has_many :items, through: :cart_items
   has_many :orders
   has_many :item_comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 end

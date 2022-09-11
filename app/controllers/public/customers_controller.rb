@@ -2,6 +2,8 @@ class Public::CustomersController < ApplicationController
   def show
     @customer = current_customer
     @orders = @customer.orders
+    favorites = Favorite.where(customer_id: current_customer.id).pluck(:admin_id)  # ログイン中のユーザーのお気に入りのadmin_idカラムを取得
+    @favorite_list = Admin.find(favorites)     # adminsテーブルから、お気に入り登録済みのレコードを取得
   end
 
   def edit
