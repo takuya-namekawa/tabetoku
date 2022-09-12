@@ -1,3 +1,11 @@
+<div class="container mt-4 mb-3">
+  <div class="row">
+    <div class="col-12">
+      <h4 class="text-center font-weight-bold " style="color: #6e470c; ">
+      お店マイページ</h4>
+    </div>
+  </div>
+</div>
 <div class="container pt-3">
   <div class="row pb-3">
     <div class="col-8">
@@ -8,18 +16,22 @@
         <div class="col-7">
           <table class="table table-borderless">
             <tr>
-              <td><h5>店舗名</h5><%= @admin.name %></td>
-                <td><h5>店舗電話番号</h5><%= @admin.phone_number %></td>
+              <td><p class="font-weight-bold">店舗名</p><%= @admin.name %></td>
+                <td><p class="font-weight-bold">店舗電話番号</p><%= @admin.phone_number %></td>
             </tr>
             <tr>
-              <td><h5>店舗住所</h5><%= @admin.address %></td>
-              <td><h5>店舗ホームページ</h5><%= @admin.home_page %></td>
+              <td><p class="font-weight-bold">店舗住所</p><%= @admin.address %></td>
+              <td><p class="font-weight-bold">店舗ホームページ</p><%= @admin.home_page %></td>
             <tr>
-              <td><h5>商品提供時間</h5><%= @admin.start_offer %></td>
-              <td><h5>商品提供終了時間</h5><%= @admin.end_offer %></td>
+              <td><p class="font-weight-bold">商品提供時間</p><%= @admin.start_offer %></td>
+              <td><p class="font-weight-bold">商品提供終了時間</p><%= @admin.end_offer %></td>
             </tr>
             <tr>
-              <td><%= link_to "会員編集" , edit_admin_admin_path(@admin) %></td>
+              <td>
+                <%= link_to  edit_admin_admin_path(@admin) , class: 'btn- btn-outline-dark ' do  %>
+                お店の情報を編集する<i class="fas fa-edit"></i>
+                <% end %>
+              </td>
             </tr>
           </table>
         </div>
@@ -27,26 +39,28 @@
     </div>
     <div class="col-4">
       <div class="container pt-3">
-        <h4>カテゴリー新規追加</h4>
+        <h4 class="text-center font-weight-bold">
+          ジャンル新規登録
+        </h4>
         <%= form_with model: @genre, url: admin_genres_path do |f| %>
           <div class="row pb-4 pt-5">
-            <%= f.label :name, "カテゴリー名" %>
+            <%= f.label :name, "ジャンル名" %>
           </div>
           <div class="row pb-5">
             <%= f.text_field :name, class:'form-control' %>
           </div>
           <div class="row pb-5">
-            <%= f.submit '新規登録', class: 'btn btn-success btn-block' %>
+            <%= f.submit '新規登録', class: 'btn btn-secondary btn-block' %>
           </div>
         <% end %>
-
       </div>
     </div>
   </div>
 </div>
-
 <div class="container">
-  <h2>商品新規登録</h2>
+  <h4 class=" font-weight-bold mb-4">
+    商品新規登録
+  </h4>
     <div class="row">
       <div class=" col-6">
         <%= form_with model: @item, url: admin_items_path do |f| %>
@@ -89,7 +103,7 @@
             <%= f.label :在庫数,class: "col-sm-3 col-form-label " %>
             <div class="col-sm-9 pl-4 ">
               <div class="form-check-inline">
-                <%= f.text_field :inventory, autofocus: true, class:"form-control ", id:"inputName"%> <label class="form-check-label" for="inlineRadio3"></label>
+                <%= f.text_field :inventory, autofocus: true, class:"form-control ", id:"inputName"%>個 <label class="form-check-label" for="inlineRadio3"></label>
               </div>
             </div>
           </div>
@@ -109,7 +123,7 @@
             <%= f.file_field :profile_image, accept: "image/" ,class:"col-sm-8 pl-4" %>
           </div>
           <div class="text-center">
-            <%= f.submit "商品を登録する" ,class: "btn btn-success " %>
+            <%= f.submit "商品を新しく登録する" ,class: "btn btn-secondary" %>
           </div>
         </form>
         <% end %>
@@ -119,7 +133,7 @@
           <table class="table">
             <thead class="thead table-secondary">
               <tr>
-                <th>カテゴリー一覧</th>
+                <th>ジャンル一覧</th>
                 <th colspan="3"></th>
               </tr>
             </thead>
@@ -127,7 +141,11 @@
               <% @genres.each do |genre| %>
               <tr>
                 <th><%= genre.name %></th>
-                <th><%= link_to '編集する',  edit_admin_genre_path(genre), class: 'btn-sm btn-success' %></th>
+                <th>
+                  <%= link_to  edit_admin_genre_path(genre), class: 'btn- btn-outline-secondary ' do %>
+                    編集<i class="fas fa-edit"></i>
+                  <% end %>
+                </th>
               </tr>
               <% end %>
             </tbody>

@@ -5,6 +5,9 @@ class Public::CartItemsController < ApplicationController
     if !cart_item.amount_status    #新しくカラムを追加　amount_status  在庫数を減らすためにboolean型で管理
     cart_item.update(amount_status: true)  #indexページへアクセスする度に在庫数が減るのを防ぐ処理
     cart_item.item.update(inventory: (cart_item.item.inventory - cart_item.amount))  #買い物カゴに入っている数量から商品の在庫数を引く
+      if cart_item.item.inventory == 0
+         cart_item.item.update(is_ordered: false)
+      end
     end
 
     @total_price = 0
@@ -39,7 +42,12 @@ class Public::CartItemsController < ApplicationController
 
   def destroy
     cart_item = CartItem.find(params[:id])
+    cart_item.item.update(inventory: (cart_item.item.inventory + cart_item.amount))
+      if cart_item.item.inventory > 0  #商品を取り消しで戻した際在庫数を戻す
+         cart_item.item.update(is_ordered: true)
+      end
     cart_item.destroy
+
     redirect_to cart_items_path
   end
 

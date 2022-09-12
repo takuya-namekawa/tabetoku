@@ -16,7 +16,7 @@ class Public::ItemsController < ApplicationController
       @item_inventory.push(i)
     end
     @item_comment = ItemComment.new
-   
+  
   end
 
   def genre_items

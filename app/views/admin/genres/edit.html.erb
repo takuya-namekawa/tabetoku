@@ -1,18 +1,19 @@
-<div class="container">
-  <h4 class="m-4"><span style="background-color:#dddddd">ジャンル編集</span></h4>
-</div>
-<div class="container">
-  <%= form_with model: @genre, url: admin_genre_path(@genre) do |f| %>
-  <div class="row pt-4 pb-4">
-    <div class="col-2 text-center ">
-      <%= f.label :name, "カテゴリー名" %>
-    </div>
-    <div class="col-3">
-      <%= f.text_field :name, class:'form-control' %>
-    </div>
-    <div class="col-3">
-      <%= f.submit '変更を保存', class: 'btn btn-success btn-block' %>
-      <% end %>
+<div class="container mt-4 mb-3">
+  <div class="row">
+    <div class="col-12">
+      <h4 class="text-center font-weight-bold " style="color: #6e470c; ">
+      ジャンル編集</h4>
     </div>
   </div>
- </div>
+</div>
+<div class="container mb-5 pb-5">
+   <div class="row">
+     <div class="col-6 offset-3 text-center">
+       <%= form_with model: @genre, url: admin_genre_path(@genre) do |f| %>
+         <p class="font-weight-bold mb-4 m-3"><%= f.label :name, "ジャンル名" %></p>
+         <div class=" mb-5"><%= f.text_field :name, class:'form-control' %></div>
+         <%= f.submit '変更を保存', class: 'btn btn-secondary btn-block' %>
+       <% end %>
+    </div>
+  </div>
+</div>

@@ -1,12 +1,18 @@
 <div class="container mt-5">
   <div class="row">
     <div class="text-center col-sm-8">
+      <%= link_to  admin_path(@item.admin) , class: "text-decoration-none" do %>
       <%= image_tag @item.get_profile_image(700,700), class: 'img-fluid'%>
+      <% end %>
     </div>
     <div class="col-sm-4">
       <table class="table table-borderless">
          <tr>
-           <td><%= image_tag @item.admin.get_profile_image(150,150), class: 'img-fluid'%></td>
+           <td>
+             <%= link_to  admin_path(@item.admin) , class: "text-decoration-none" do %>
+             <%= image_tag @item.admin.get_profile_image(150,150), class: 'img-fluid'%>
+             <% end %>
+            </td>
          </tr>
          <tr>
             <td><h5><%= @item.name %></h5></td>
@@ -19,6 +25,9 @@
          </tr>
          <tr>
             <td>正規価格<%= @item.price %>円(税込)</td>
+         </tr>
+         <tr>
+           <td>在庫数 <%= @item.inventory %>個</td>
          </tr>
          <tr>
            <td><i class="far fa-comment-dots"></i> <%= @item.item_comments.count %> 件</td>
@@ -55,7 +64,6 @@
   <div class="row">
     <div class="col-8  bg-white border border-secondary rounded shadow-sm">
       <% @item.item_comments.each do |item_comment| %>
-
         <%= item_comment.created_at.strftime("%Y年%-m月%-d日%H時%M分")  %><br>
         <%= item_comment.customer.name %><br>
         <div id="star-rate<%= item_comment.id%>">

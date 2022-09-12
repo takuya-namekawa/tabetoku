@@ -18,8 +18,8 @@
                <th>合計金額(税込)</th>
                <th>来店ステータス</th>
              </tr>
-           </thead>
-           <tbody>
+          </thead>
+          <tbody>
             <% @reserves.each do |reserve| %>
               <tr>
                 <td><%= reserve.created_at.strftime("%Y年%-m月%-d日%H時%M分")  %></td>
@@ -28,28 +28,22 @@
                   <%= reserve.order.customer.name %>
                   <% end %>
                 </td>
-                 <td> <% reserve.cart_data_hash.each do |item| %>
-                    <%= item[:name] %> × <%= item[:amount] %>
-                    <% end %>
-                 </td>
-                 <td><%= reserve.total_payment %>円</td>
-
-                 <td><% if reserve.visit_status %>
-                      <div class='text-secondary'>来店済み</div>
-                      <% else %>
-                      <div class="text-success">来店予定</div>
-                      <% end %>
-                 </td>
-
-                 <td><%= link_to "予約の詳細を見る" ,  admin_reserve_path(reserve) , class: "text-reset" %></td>
-               </tr>
+                <td> <% reserve.cart_data_hash.each do |item| %>
+                  <%= item[:name] %> × <%= item[:amount] %>
+                  <% end %>
+                </td>
+                <td><%= reserve.total_payment %>円</td>
+                <td><% if reserve.visit_status %>
+                  <div class='text-secondary'>来店済み</div>
+                  <% else %>
+                  <div class="text-success">来店予定</div>
+                  <% end %>
+                </td>
+                <td><%= link_to "予約の詳細を見る" ,  admin_reserve_path(reserve) , class: "text-reset" %></td>
+              </tr>
             <% end %>
           </tbody>
       </table>
     </div>
   </div>
- </div>
-
-<%# @order.customer.each do |customer| %>
-  <%#= customer.name %>
-  <%# end %>
+</div>
