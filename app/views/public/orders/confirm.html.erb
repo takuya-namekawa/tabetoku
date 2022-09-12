@@ -58,9 +58,9 @@
                    <%= g.select :minutes, [00, 15, 30, 45].map{ |o| format("%02d", o) } %>
                 </td>
              </tr>
-                <%= g.hidden_field :cart_data %>
-                <%= g.hidden_field :total_payment %>
-                <%= g.hidden_field :admin_id %>
+             <%= g.hidden_field :cart_data %>
+             <%= g.hidden_field :total_payment %>
+             <%= g.hidden_field :admin_id %>
           <% end %>
            <tr>
              <td><%= f.submit "ご予約を確定する" , class: "btn btn-danger btn-block"%> </td>

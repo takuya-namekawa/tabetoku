@@ -1,24 +1,27 @@
-<div class="container m-5">
+<div class="container mt-5">
   <div class="row">
     <div class="text-center col-sm-8">
-      <%= image_tag @item.get_profile_image(650,650)%>
+      <%= image_tag @item.get_profile_image(700,700), class: 'img-fluid'%>
     </div>
     <div class="col-sm-4">
       <table class="table table-borderless">
          <tr>
-           <td><%= image_tag @item.admin.get_profile_image(150,150)%></td>
+           <td><%= image_tag @item.admin.get_profile_image(150,150), class: 'img-fluid'%></td>
          </tr>
          <tr>
-            <td><h3><%= @item.name %></h3></td>
+            <td><h5><%= @item.name %></h5></td>
          </tr>
          <tr>
             <td><h6><%= @item.explanation %></h6></td>
          </tr>
          <tr>
-            <td><h3>提供価格<%= @item.half_price %>円(税込)</h3></td>
+            <td><h5>提供価格<%= @item.half_price %>円(税込)</h5></td>
          </tr>
          <tr>
             <td>正規価格<%= @item.price %>円(税込)</td>
+         </tr>
+         <tr>
+           <td><i class="far fa-comment-dots"></i> <%= @item.item_comments.count %> 件</td>
          </tr>
          <tr>
             <td>
@@ -40,54 +43,62 @@
       </div>
   </div>
 </div>
-
-
-
-<p>コメント件数<%= @item.item_comments.count %></p>
-
-<% @item.item_comments.each do |item_comment| %>
-
-  <%= item_comment.customer.name %>
-  <%= item_comment.created_at.strftime('%Y/%m/%d') %>
-
-  <div id="star-rate<%= item_comment.id%>">
-    <script>
-      $('#star-rate<%= item_comment.id %>').empty();
-      $('#star-rate<%= item_comment.id%>').raty({
-        size      : 36,
-        starOff   : '<%= asset_path('star-off.png') %>',
-        starOn    : '<%= asset_path('star-on.png') %>',
-        half      : false,
-        readOnly: true,
-        score: <%= item_comment.star %>,
-      });
-    </script>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <p class="text-center font-weight-bold border-bottom  border-dark" style="color: #6e470c; ">
+      クチコミをレビューする<p>
+    </div>
   </div>
-
-  <%= item_comment.comment %>
-    <% if item_comment.customer == current_customer %>
-      <%= link_to "削除", item_item_comment_path(item_comment.item, item_comment), method: :delete %>
-
-    <% end %>
-<% end %>
-
-<%= form_with model: [@item, @item_comment] do |f| %>
-<div class="form-group row" id="star">
-  <%= f.label :star,'評価 ', class:'col-md-3 col-form-label' %>
-  <%= f.hidden_field :star, id: :review_star %>
 </div>
-<script>
-  $('#star').empty();
-  $('#star').raty({
-    size     : 36,
-    starOff:  '<%= asset_path('star-off.png') %>',
-    starOn : '<%= asset_path('star-on.png') %>',
-          scoreName: 'item_comment[star]',
-    half: false,
-  });
-</script>
-<%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-<%= f.submit "コメントを送信する" %>
-<% end %>
+<div class="container mb-4">
+  <div class="row">
+    <div class="col-8  bg-white border border-secondary rounded shadow-sm">
+      <% @item.item_comments.each do |item_comment| %>
 
-
+        <%= item_comment.created_at.strftime("%Y年%-m月%-d日%H時%M分")  %><br>
+        <%= item_comment.customer.name %><br>
+        <div id="star-rate<%= item_comment.id%>">
+          <script>
+            $('#star-rate<%= item_comment.id %>').empty();
+            $('#star-rate<%= item_comment.id%>').raty({
+              size      : 36,
+              starOff   : '<%= asset_path('star-off.png') %>',
+              starOn    : '<%= asset_path('star-on.png') %>',
+              half      : false,
+              readOnly: true,
+              score: <%= item_comment.star %>,
+            });
+          </script>
+        </div><br>
+        <p class="border-bottom  border-dark">
+          <%= item_comment.comment %></p>
+          <% if item_comment.customer == current_customer %>
+            <%= link_to item_item_comment_path(item_comment.item, item_comment), method: :delete ,class: "text-reset" do %>
+            <i class="fas fa-trash-alt"></i> クチコミを削除する
+            <% end %>
+          <% end %>
+        <% end %>
+    </div>
+    <div class="col-4 text-center ">
+      <%= form_with model: [@item, @item_comment] do |f| %>
+        <div class="form-group row justify-content-center" id="star">
+          <%= f.label :star,'評価 ', class:'col-md-3 col-form-label' %>
+          <%= f.hidden_field :star, id: :review_star %>
+        </div>
+        <script>
+          $('#star').empty();
+          $('#star').raty({
+            size     : 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            scoreName: 'item_comment[star]',
+            half: false,
+          });
+        </script>
+      <%= f.text_area :comment, rows: '5', placeholder: "クチコミ本文を入れてください" , class: "form-control"%><br>
+      <%= f.submit "クチコミを投稿する" ,class: 'btn btn-danger '%>
+      <% end %>
+    </div>
+  </div>
+</div>

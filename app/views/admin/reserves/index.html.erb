@@ -1,25 +1,30 @@
-<div class="container m-2">
-  <h2 class="text-center pb-4 pt-3">予約一覧</h2>
+<div class="container mt-4 mb-3">
+  <div class="row">
+    <div class="col-12">
+      <h4 class="text-center font-weight-bold" style="color: #6e470c; ">
+      予約一覧</h4>
+    </div>
+  </div>
 </div>
 <div class="container mb-5 pb-5">
   <div class="row">
     <div class="col">
-      <table class="table">
+      <table class="table text-nowrap">
           <thead>
              <tr>
                <th>注文日時</th>
                <th>会員名</th>
                <th>商品名 × 注文個数</th>
-               <th>合計金額</th>
+               <th>合計金額(税込)</th>
                <th>来店ステータス</th>
              </tr>
            </thead>
            <tbody>
             <% @reserves.each do |reserve| %>
               <tr>
-                <td><%= reserve.created_at.strftime("%Y年 %-m月 %-d日 %H時 %M分")  %></td>
+                <td><%= reserve.created_at.strftime("%Y年%-m月%-d日%H時%M分")  %></td>
                 <td>
-                  <%= link_to  admin_customer_path(reserve.order.customer) do %>
+                  <%= link_to  admin_customer_path(reserve.order.customer) , class: "text-reset" do %>
                   <%= reserve.order.customer.name %>
                   <% end %>
                 </td>
@@ -27,16 +32,16 @@
                     <%= item[:name] %> × <%= item[:amount] %>
                     <% end %>
                  </td>
-                 <td><%= reserve.total_payment %></td>
-                 <td><%= reserve.visit.strftime("%Y年 %-m月 %-d日 %H時 %M分") %></td>
+                 <td><%= reserve.total_payment %>円</td>
+
                  <td><% if reserve.visit_status %>
                       <div class='text-secondary'>来店済み</div>
                       <% else %>
                       <div class="text-success">来店予定</div>
                       <% end %>
                  </td>
-                 <td><%= Order.payment_methods_i18n[reserve.order.payment_method] %></td>
-                 <td><%= link_to "予約の詳細を見る" ,  admin_reserve_path(reserve) %></td>
+
+                 <td><%= link_to "予約の詳細を見る" ,  admin_reserve_path(reserve) , class: "text-reset" %></td>
                </tr>
             <% end %>
           </tbody>

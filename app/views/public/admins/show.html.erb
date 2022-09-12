@@ -22,32 +22,26 @@
          </tr>
          <tr>
             <td class="w-50"><p class="font-weight-bold">住所 </p> </td>
-           <td><%= @admin.address %></td>
+            <td><%= @admin.address %></td>
          </tr>
          <tr>
             <td class="w-50"><p class="font-weight-bold">電話番号</p></td>
-             <td><%= @admin.phone_number %>
+            <td><%= @admin.phone_number %>
          </tr>
          <tr>
-             <td class="w-50"><p class="font-weight-bold">店舗ホームページ</p></td>
-               <td><%= @admin.home_page %></td>
+            <td class="w-50"><p class="font-weight-bold">店舗ホームページ</p></td>
+            <td><%= @admin.home_page %></td>
          </tr>
          <tr>
-             <td class="w-50"><p class="font-weight-bold">商品の提供開始</p> </td>
-              <td><%= @admin.start_offer %>時</td>
+            <td class="w-50"><p class="font-weight-bold">商品の提供開始</p> </td>
+            <td><%= @admin.start_offer %>時</td>
          </tr>
          <tr>
-             <td class="w-50"><p class="font-weight-bold">商品の提供終了</p></td>
-              <td><%= @admin.end_offer %>時</td>
-
-
-
+            <td class="w-50"><p class="font-weight-bold">商品の提供終了</p></td>
+            <td><%= @admin.end_offer %>時</td>
          </tr>
-        </table>
-      </div>
-
-
-
+      </table>
+    </div>
 <div class="container mt-2 mb-2">
   <div class="row">
     <div class="col-12">
@@ -79,16 +73,15 @@
          infowindow.open(map, marker);
        });
      }
-   </script>
-   <script async defer
-             src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
-   </script>
+ </script>
+ <script async defer
+    src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
+ </script>
    <style type="text/css">
      #map { height: 150px;
            width: 100%;}
    </style>
    <div id="map"></div>
 </div>
-
-    </div>
+</div>
 </div>

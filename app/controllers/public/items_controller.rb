@@ -5,6 +5,7 @@ class Public::ItemsController < ApplicationController
     @items = Item.all
     @genres = Genre.all
 
+
   end
 
   def show
@@ -15,6 +16,7 @@ class Public::ItemsController < ApplicationController
       @item_inventory.push(i)
     end
     @item_comment = ItemComment.new
+   
   end
 
   def genre_items
