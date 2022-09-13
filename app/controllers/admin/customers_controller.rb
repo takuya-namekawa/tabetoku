@@ -1,11 +1,7 @@
 class Admin::CustomersController < ApplicationController
+
   def show
-
     @customer =Customer.find(params[:id])
-    #find_by(name: xxx)
-
-    #@customer.reserve = @customer
-    #@admin_reserve = @customer
   end
 
   def edit
@@ -13,6 +9,9 @@ class Admin::CustomersController < ApplicationController
   end
 
   def update
+    @customer = Customer.find(params[:id])
+    @customer.update(customer_params)
+    redirect_to admin_customer_path(@customer)
   end
 
   def customer_params

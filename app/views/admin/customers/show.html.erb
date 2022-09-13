@@ -1,8 +1,46 @@
-<h1>Admin::Customers#show</h1>
-<p>Find me in app/views/admin/customers/show.html.erb</p>
-
-<%= @customer.name %>
-<%= @customer.name_kana %>
-<%= @customer.phone_number %>
-<%= @customer.email %>
-<%= @customer.is_active %>
+<div class="container mt-4 mb-3">
+  <div class="row">
+    <div class="col-12">
+      <h4 class="text-center font-weight-bold " style="color: #6e470c; ">
+      会員詳細</h4>
+    </div>
+  </div>
+</div>
+<div class="container mt-2 mb-5">
+   <div class="row">
+     <div class="col-6 offset-3 text-center bg-white shadow-sm">
+       <table class="table ">
+          <tr>
+            <td><p class="font-weight-bold">会員名</p></td>
+            <td><%= @customer.name %></td>
+          </tr>
+          <tr>
+            <td><p class="font-weight-bold">フリガナ</p></td>
+            <td><%= @customer.name_kana %></td>
+          </tr>
+          <tr>
+            <td><p class="font-weight-bold">メールアドレス</p></td>
+            <td><%= @customer.email %></td>
+          <tr>
+          <tr>
+            <td><p class="font-weight-bold">電話番号</p></td>
+            <td><%= @customer.phone_number %></td>
+          </tr>
+          <td>
+            <% if @customer.is_active %>
+              <div class='text-success font-weight-bold'>会員</div>
+            <% else %>
+              <div class="text-danger font-weight-bold">強制退会</div>
+            <% end %>
+          </td>
+            <td>
+              <%= link_to  edit_admin_customer_path(@customer) , class: 'btn- btn-outline-dark ' do  %>
+              会員の情報を編集する<i class="fas fa-edit"></i>
+              <% end %>
+            </td>
+          </tr>
+        </table>
+      </dav>
+    </div>
+  </div>
+</div>
