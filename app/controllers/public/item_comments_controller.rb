@@ -1,4 +1,5 @@
 class Public::ItemCommentsController < ApplicationController
+  before_action :user_authenticate
 
   def create
     item = Item.find(params[:item_id])
@@ -14,6 +15,14 @@ class Public::ItemCommentsController < ApplicationController
   end
 
   private
+
+  def user_authenticate
+    if customer_signed_in? || admin_signed_in?
+    else
+       redirect_to root_path
+    end
+
+  end
 
   def item_comments_params
     params.require(:item_comment).permit(:comment, :star)

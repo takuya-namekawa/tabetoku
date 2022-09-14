@@ -26,7 +26,7 @@ scope module: :public do
     resources :item_comments, only: [:create, :destroy]
       collection do
         get 'search'
-      end  
+      end
   end
   resources :cart_items, only: [:index, :update, :destroy, :create] do
     collection do
@@ -39,7 +39,7 @@ scope module: :public do
   resources :orders, only: [:new, :create, :index, ]
   resources :admins, only: [:show] do
     resource :favorites, only: [:create, :destroy]
-  
+
     collection do
      get 'shops' => 'admins#index'
     end
@@ -56,7 +56,9 @@ namespace :admin do
   resources :items, only: [:index, :new, :create, :edit, :update]
   resources :genres, only: [:index, :create, :edit, :update]
   resources :reserves, only: [:index, :show, :create, :update]
-  resources :customers, only: [:edit, :show, :update]
+  resources :customers, only: [:edit, :show, :update] do
+    patch 'out'
+  end
 end
 
 end
