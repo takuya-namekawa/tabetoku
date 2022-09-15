@@ -1,5 +1,5 @@
 class Public::OrdersController < ApplicationController
-
+  before_action :authenticate_customer!
 
   def confirm
     @order = current_customer.orders.build

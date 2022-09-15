@@ -11,7 +11,9 @@
     <div class="col-sm-5 ">
       <%= image_tag @admin.get_profile_image(400,400), class: 'img-fluid mb-3'%>
         <h6 class=" font-weight-bold" style="color: #6e470c; ">
-          <%= render 'public/favorites/favorite', admin: @admin %>
+          <% if customer_signed_in? %>
+            <%= render 'public/favorites/favorite', admin: @admin %>
+          <% end %>
         </h6>
     </div>
     <div class="col-sm-7">

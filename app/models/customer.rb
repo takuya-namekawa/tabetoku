@@ -13,5 +13,11 @@ class Customer < ApplicationRecord
     super && (is_active == true)
   end
 
+  with_options presence: true do
+  validates :name
+  validates :name_kana
+  validates :phone_number
+  validates :email
+  end
 
 end

@@ -1,4 +1,6 @@
 class Admin::AdminsController < ApplicationController
+  before_action :authenticate_admin!
+  
   def show
     @admin = current_admin
     @item = Item.new
@@ -13,9 +15,9 @@ class Admin::AdminsController < ApplicationController
   def update
     @admin = current_admin
     if @admin.update(admin_params)
-      redirect_to my_page_admin_admins_path
+      redirect_to my_page_admin_admins_path, notice: "お店の情報を更新しました"
     else
-      render :edit
+      render "admin/admins/edit"
     end
   end
 

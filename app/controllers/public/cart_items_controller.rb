@@ -1,4 +1,6 @@
 class Public::CartItemsController < ApplicationController
+  before_action :authenticate_customer!
+  
   def index
   @cart_items = current_customer.cart_items
   @cart_items.each do |cart_item|  #indexで特定の情報を取りたい場合はeach文を使う

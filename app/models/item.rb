@@ -13,4 +13,11 @@ class Item < ApplicationRecord
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
+  validates :name,presence:true
+  validates :explanation,presence:true
+  validates :half_price,presence:true
+  validates :price,presence:true
+  validates :inventory,presence:true
+
+
 end

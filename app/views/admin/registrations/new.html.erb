@@ -6,8 +6,8 @@
               <%= form_with model: @admin, url: admin_registration_path do |f| %>
               <%= render "public/shared/error_messages", resource: resource %>
               <div class="text-left">
-                <%= f.label :名前 %>
-                <%= f.text_field :name, autofocus: true, class:"form-control", id:"inputName", placeholder:"名前"%>
+                <%= f.label :店舗名 %>
+                <%= f.text_field :name, autofocus: true, class:"form-control", id:"inputName", placeholder:"店舗名"%>
               </div>
               <div class="text-left">
                 <%= f.label :店舗住所 %>

@@ -1,21 +1,19 @@
 class Admin::ReservesController < ApplicationController
+  before_action :authenticate_admin!
+  
   def index
     @reserves = current_admin.reserves.all
-    # @order = Order.customer.find_by(customer_id: customer_id)
   end
 
   def show
-    #@reserve = current_admin.reserves.find(params[:id])
     @reserve = Reserve.find(params[:id])
 
   end
 
   def update
-    # @reserve = current_admin.find(admin_id: admin_id)
     @reserve = Reserve.find(params[:id])
-  
     @reserve.update(reserve_params)
-    redirect_to admin_reserves_path
+    redirect_to admin_reserves_path, notice: "来店ステータスを更新しました"
   end
 
   private

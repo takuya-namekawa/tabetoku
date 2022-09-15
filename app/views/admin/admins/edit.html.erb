@@ -1,3 +1,11 @@
+<% if  @admin.errors.any? %>
+  <ul class="text-center alert alert-danger"style=" list-style: none; ">
+    <%=  @admin.errors.count %>件のエラーが発生しました
+      <% @admin.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+  </ul>
+<% end %>
 <div class="container mt-4 mb-3">
   <div class="row">
     <div class="col-12">

@@ -19,4 +19,14 @@ has_one_attached :profile_image
   end
   profile_image.variant(resize_to_limit: [width, height]).processed
   end
+
+
+  with_options presence: true do
+  validates :name
+  validates :address
+  validates :phone_number
+  validates :email
+end
+
+
 end

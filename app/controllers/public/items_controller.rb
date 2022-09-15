@@ -1,11 +1,10 @@
 class Public::ItemsController < ApplicationController
+  before_action :authenticate_customer!, except: [:index, :show, :search, :genre_items]
   before_action :set_search, only: [:index, :search]
 
   def index
     @items = Item.all
     @genres = Genre.all
-
-
   end
 
   def show
@@ -16,7 +15,7 @@ class Public::ItemsController < ApplicationController
       @item_inventory.push(i)
     end
     @item_comment = ItemComment.new
-  
+
   end
 
   def genre_items

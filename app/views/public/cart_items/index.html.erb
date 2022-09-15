@@ -61,7 +61,7 @@
       新しく登録された商品</p>
       <% @items.first(10).each do |item| %>
         <%= link_to  item_path(item.id)  , class: "text-decoration-none " do %>
-          <%= image_tag item.get_profile_image(100, 100) , class: "mr-1"%>
+          <%= image_tag item.get_profile_image(100, 100) , class: "mr-1 img-fluid'"%>
       <% end %>
     <% end %>
     </div>

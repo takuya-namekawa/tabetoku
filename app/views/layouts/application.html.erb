@@ -14,7 +14,17 @@
   </head>
 
   <body class="background" style="background-color: #f4f4f4;">
-    <%= render "layouts/header" %>
+    <%= render "layouts/header2" %>
+     <% if flash[:notice] %>
+      <div class="alert alert-dark text-center">
+        <p class="notice"><%= notice %></p>
+      </div>
+    <% end %>
+    <% if flash[:alert] %>
+      <div class="alert alert-danger text-center">
+        <p class="alert"><%= alert %></p>
+      </div>
+    <% end %>
     <%= yield %>
     <%= render "layouts/footer" %>
   </body>

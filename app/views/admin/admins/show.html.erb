@@ -1,3 +1,19 @@
+<% if  @genre.errors.any? %>
+  <ul class="text-center alert alert-danger"style=" list-style: none; ">
+    <%=  @genre.errors.count %>件のエラーが発生しました
+      <% @genre.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+  </ul>
+<% end %>
+<% if  @item.errors.any? %>
+  <ul class="text-center alert alert-danger"style=" list-style: none; ">
+    <%=  @item.errors.count %>件のエラーが発生しました
+      <% @item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+  </ul>
+<% end %>
 <div class="container mt-4 mb-3">
   <div class="row">
     <div class="col-12">
