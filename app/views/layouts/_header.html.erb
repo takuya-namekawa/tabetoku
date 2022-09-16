@@ -1,76 +1,90 @@
-<nav class="navbar navbar-expand navbar-dark navbar-fixed-top shadow-sm", style="background-color: #ffffff;">
-  <div class="container ">
-
-    <div class="navbar-header">
-      <%= link_to root_path, class: "navbar-brand" do %>
-      <img src="/assets/logo.gif" width="150" height="60" class="d-inline-block align-top" alt="">
-      <% end %>
-    </div>
-
-
- <% if customer_signed_in? %>
-
-
-
-        <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <%= link_to "マイページ", my_page_customers_path, class: 'btn btn-dark  rounded-pill  mr-3 shadow-sm' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "商品一覧", items_path, class: 'btn btn-dark rounded-pill  mr-3 shadow-sm' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "カート", cart_items_path, class: 'btn btn-dark rounded-pill  mr-3 shadow-sm' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "ログアウト",  destroy_customer_session_path, method: :delete, class: 'btn btn-dark rounded-pill  mr-3 shadow-sm' %>
-        </li>
-      </ul>
- <% elsif admin_signed_in? %>
-      <ul class="navbar-nav ml-auto">
-
-        <li>
-          <%= link_to admin_items_path, class: 'btn btn-dark  rounded-pill  mr-3 shadow-sm'  do %>
-          商品一覧
-          <% end %>
-        </li>
-        <li>
-          <%= link_to admin_reserves_path, class: 'btn btn-dark  rounded-pill  mr-3 shadow-sm'  do %>
-          予約一覧
-          <% end %>
-        </li>
-        <li>
-          <%= link_to  my_page_admin_admins_path, class: 'btn btn-dark  rounded-pill  mr-3 shadow-sm'  do %>
-          SHOPマイページ
-          <% end %>
-        </li>
-
-        <li>
-          <%= link_to destroy_admin_session_path, method: :delete, class: 'btn btn-dark  rounded-pill  mr-3 shadow-sm'  do %>
-          ログアウト
-          <% end %>
-        </li>
-      </ul>
+<nav class="navbar navbar-expand-lg navbar-light pl-3 shadow-sm"style="background-color: #ffffff;">
+  <%= link_to root_path, class: "navbar-brand" do %>
+    <img src="/assets/logo.gif" width="150" height="50" class="d-inline-block align-top" alt="">
+  <% end %>
+</div>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarText">
+  <% if customer_signed_in? %>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <%= link_to  my_page_customers_path,class: "nav-link" do %>
+          <p class=" font-weight-bold  border-bottom  border-dark" style="color: #ad9168; ">マイページ</p>
+        <% end %>
+      </li>
+      <li class="nav-item active">
+        <%= link_to items_path, class: "nav-link" do %>
+          <p class=" font-weight-bold  border-bottom  border-dark" style="color: #ad9168; ">商品一覧</p>
+        <% end %>
+      </li>
+      <li class="nav-item active">
+        <%= link_to  cart_items_path, class: "nav-link"  do %>
+          <p class=" font-weight-bold  border-bottom  border-dark" style="color: #ad9168; ">カート</p>
+        <% end %>
+      </li>
+       <li class="nav-item active">
+        <%= link_to  destroy_customer_session_path, method: :delete, class: "nav-link"  do %>
+          <p class=" font-weight-bold  border-bottom  border-dark" style="color: #ad9168; ">ログアウト</p>
+        <% end %>
+      </li>
+    </ul>
+    <span class="navbar-text pr-3">
+      <p class=" font-weight-bold  border-bottom  border-dark" style="color: #ad9168; ">Welcome!!　<%= current_customer.name %>さん</p>
+    </span>
+    <% elsif admin_signed_in? %>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <%= link_to  my_page_admin_admins_path, class: "nav-link" do %>
+          <p class=" font-weight-bold  border-bottom  border-dark" style="color: #ad9168; ">お店マイページ</p>
+        <% end %>
+      </li>
+      <li class="nav-item active">
+        <%= link_to admin_items_path, class: "nav-link" do %>
+          <p class=" font-weight-bold  border-bottom  border-dark" style="color: #ad9168; ">商品一覧</p>
+        <% end %>
+      </li>
+      <li class="nav-item active">
+        <%= link_to  admin_reserves_path, class: "nav-link"  do %>
+          <p class=" font-weight-bold  border-bottom  border-dark" style="color: #ad9168; ">予約一覧</p>
+        <% end %>
+      </li>
+      <li class="nav-item active">
+        <%= link_to  destroy_admin_session_path, method: :delete, class: "nav-link"  do %>
+          <p class=" font-weight-bold  border-bottom  border-dark" style="color: #ad9168; ">ログアウト</p>
+        <% end %>
+      </li>
+    </ul>
+    <span class="navbar-text pr-3">
+      <p class=" font-weight-bold  border-bottom  border-dark" style="color: #ad9168; ">Welcome!!　<%= current_admin.name %>さん</p>
+    </span>
     <% else %>
-
-
-
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <%= link_to "会員登録", new_customer_registration_path, class: 'btn btn-dark rounded-pill  mr-3 shadow-sm' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "ログイン", new_customer_session_path, class: 'btn btn-dark rounded-pill  mr-3 shadow-sm' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "商品一覧", items_path, class: 'btn btn-dark rounded-pill  mr-3 shadow-sm'%>
-        </li>
-        <li class="nav-item">
-          <%= link_to "店舗情報", "#", class: 'btn btn-dark rounded-pill  mr-3 shadow-sm' %>
-        </li>
-      </ul>
-
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <%= link_to  new_customer_registration_path, class: "nav-link" do %>
+          <p class=" font-weight-bold  border-bottom  border-dark" style="color: #ad9168; ">会員登録</p>
+        <% end %>
+      </li>
+      <li class="nav-item active">
+        <%= link_to new_customer_session_path, class: "nav-link" do %>
+          <p class=" font-weight-bold  border-bottom  border-dark" style="color: #ad9168; ">ログイン</p>
+        <% end %>
+      </li>
+      <li class="nav-item active">
+         <%= link_to  items_path, class: "nav-link"  do %>
+          <p class=" font-weight-bold  border-bottom  border-dark" style="color: #ad9168; ">商品一覧</p>
+         <% end %>
+      </li>
+       <li class="nav-item active">
+         <%= link_to  shops_admins_path, class: "nav-link"  do %>
+          <p class=" font-weight-bold  border-bottom  border-dark" style="color: #ad9168; ">お店一覧</p>
+         <% end %>
+      </li>
+    </ul>
+    <span class="navbar-text pr-3">
+      <p class=" font-weight-bold  border-bottom  border-dark" style="color: #ad9168; ">Welcome!!　ゲストさん</p>
+    </span>
     <% end %>
-
-    </div>
-  </nav>
+  </div>
+</nav>

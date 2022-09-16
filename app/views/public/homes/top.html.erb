@@ -11,46 +11,45 @@
 <div class="container mt-4 mb-2">
   <div class="row">
     <div class="col-3">
-       <p class="text-center font-weight-bold border-bottom  border-dark " style="color: #6e470c; ">
-      ジャンルから探す</p>
+      <p class="text-center font-weight-bold border-bottom  border-dark " style="color: #6e470c; ">
+        ジャンルから探す
+      </p>
       <div class="card">
         <% @genres.each do |genre| %>
           <ul class="list-group list-group-flush">
             <li class="list-group-item text-center" style="color: #6e470c; "> <%= link_to  item_genre_items_path(genre) , class: "text-decoration-none text-reset" do %>
-            <i class="fas fa-tag"></i></i> <%= genre.name %>
-            <% end %></li>
+              <i class="fas fa-tag"></i></i> <%= genre.name %>
+            <% end %>
+            </li>
           </ul>
         <% end %>
       </div>
     </div>
     <div class="col-9 text-center">
       <p class=" font-weight-bold border-bottom  border-dark " style="color: #6e470c; ">
-      新しく登録された商品</p>
+        新しく登録された商品
+      </p>
       <% @items.first(10).each do |item| %>
          <%= link_to  item_path(item.id)  , class: "text-decoration-none" do %>
-           <%= image_tag item.get_profile_image(150, 150) %>
+          <%= image_tag item.get_profile_image(150, 150) %>
          <% end %>
       <% end %>
       <div class="col">
         <div class="text-right pt-3 pb-3">
-          <%= link_to "全ての商品を見る →", items_path, class: " text-reset"%>
+          <%= link_to "全ての商品を見る →", items_path, class: " text-reset font-weight-bold"%>
         </div>
          <p class=" font-weight-bold border-bottom  border-dark " style="color: #6e470c; ">
-         お店(新着順)</p>
+           お店(新着順)
+         </p>
          <% @admins.first(5).each do |admin| %>
            <%= link_to  admin_path(admin) , class: "text-decoration-none" do %>
-           <%= image_tag admin.get_profile_image(150, 150) , class: "mr-1" %>
+             <%= image_tag admin.get_profile_image(150, 150) , class: "mr-1" %>
            <% end %>
          <% end %>
          <div class="text-right pt-3 pb-3">
-          <%= link_to "全てのお店を見る →", shops_admins_path, class: " text-reset"%>
+          <%= link_to "全てのお店を見る →", shops_admins_path, class: " text-reset font-weight-bold"%>
         </div>
       </div>
      </div>
   </div>
 </div>
-
-<%= link_to "shopサインアップ" , new_admin_registration_path %>
-<%= link_to "shopログイン" ,   new_admin_session_path %>
-<%= link_to "shopログアウト" , destroy_admin_session_path, method: :delete %>
-

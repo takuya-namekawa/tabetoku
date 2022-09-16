@@ -2,7 +2,7 @@ class Public::AdminsController < ApplicationController
   before_action :set_search, only: [:index, :search]
 
   def index
-    @admins = Admin.all
+    @admins = Admin.page(params[:page])
     @genres = Genre.all
   end
 

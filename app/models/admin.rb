@@ -3,14 +3,14 @@ class Admin < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-has_many :items, dependent: :destroy
-has_many :reserves, dependent: :destroy
-has_many :favorites, dependent: :destroy
+  has_many :items, dependent: :destroy
+  has_many :reserves, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
-geocoded_by :address
-after_validation :geocode, if: :address_changed?
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
 
-has_one_attached :profile_image
+  has_one_attached :profile_image
 
   def get_profile_image(width, height)
   unless profile_image.attached?
@@ -26,7 +26,15 @@ has_one_attached :profile_image
   validates :address
   validates :phone_number
   validates :email
-end
+  end
+
+  def self.guest
+    find_or_create_by!(name: 'guestadmin' ,email: 'guest@example.com', address: 'guestaddress', phone_number: '0') do |admin|
+      admin.password = SecureRandom.urlsafe_base64
+      admin.name = "guestadmin"
+    end
+  end
+
 
 
 end

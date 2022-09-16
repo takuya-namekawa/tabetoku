@@ -35,7 +35,9 @@
             <td><%= @customer.email %></td>
           </tr>
           <tr>
+            <% if @customer.name != "guestcustomer" %>
             <td class="font-weight-bold"><%= link_to "会員編集を編集する" , edit_customer_path(@customer) , class: " text-reset"%></td>
+            <% end %>
           </tr>
         </table>
     </div>

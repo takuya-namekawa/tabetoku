@@ -20,4 +20,11 @@ class Customer < ApplicationRecord
   validates :email
   end
 
+  def self.guest
+    find_or_create_by!(name: 'guestcustomer' ,email: 'guest@example.com' ,name_kana: 'ゲストカスタマー' ,phone_number: '0') do |customer|
+      customer.password = SecureRandom.urlsafe_base64
+      customer.name = "guestcustomer"
+    end
+  end
+
 end

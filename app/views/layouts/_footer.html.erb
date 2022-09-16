@@ -5,7 +5,11 @@
             <p>まだ美味しく食べられる食品を繋ぐ</p>
              <img src="/assets/logo.footer.png" width="150" height="60" class="d-inline-block align-top" alt="">
           </div>
-
+          <div class="col-md-6">
+            <%= link_to "お店ログイン" ,   new_admin_session_path , class: "text-reset"%>
+            <%= link_to '（閲覧用）ゲストログイン',customers_guest_sign_in_path , method: :post , class: "text-reset ml-4"%>
+             <%= link_to '（閲覧用）お店ゲストログイン', admins_guest_sign_in_path , method: :post , class: "text-reset"%>
+          </div>
         </div>
       </div>
 </footer>

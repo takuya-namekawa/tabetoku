@@ -2,7 +2,7 @@ class Admin::ReservesController < ApplicationController
   before_action :authenticate_admin!
   
   def index
-    @reserves = current_admin.reserves.all
+    @reserves = current_admin.reserves.page(params[:page])
   end
 
   def show

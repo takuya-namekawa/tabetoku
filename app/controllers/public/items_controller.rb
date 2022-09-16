@@ -3,7 +3,7 @@ class Public::ItemsController < ApplicationController
   before_action :set_search, only: [:index, :search]
 
   def index
-    @items = Item.all
+    @items = Item.page(params[:page])
     @genres = Genre.all
   end
 

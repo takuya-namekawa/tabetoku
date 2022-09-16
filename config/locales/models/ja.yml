@@ -8,7 +8,23 @@ ja:
         name_kana: フリガナ
         phone_number: 電話番号
         email: メールアドレス
-   
+      item_comment:
+        comment: コメント
+      admin:
+        name: 店舗名
+        email: メールアドレス
+        phone_number: 電話番号
+        address: 住所
+      item:
+        name: 商品名
+        explanation: 商品説明
+        half_price: 提供価格
+        price: 正規価格
+        inventory: 在庫数
+      genre: 
+        name: ジャンル名
+      
+        
 
 
 
