@@ -51,6 +51,11 @@
         <% end %>
       </li>
       <li class="nav-item active">
+         <%= link_to  admin_notifications_path, class: "nav-link"  do %>
+          <p class=" font-weight-bold  border-bottom  border-dark " style="color: #ad9168; ">通知一覧</p>
+         <% end %>
+      </li>
+      <li class="nav-item active">
         <%= link_to  destroy_admin_session_path, method: :delete, class: "nav-link"  do %>
           <p class=" font-weight-bold  border-bottom  border-dark" style="color: #ad9168; ">ログアウト</p>
         <% end %>
@@ -76,7 +81,7 @@
           <p class=" font-weight-bold  border-bottom  border-dark" style="color: #ad9168; ">商品一覧</p>
          <% end %>
       </li>
-       <li class="nav-item active">
+      <li class="nav-item active">
          <%= link_to  shops_admins_path, class: "nav-link"  do %>
           <p class=" font-weight-bold  border-bottom  border-dark" style="color: #ad9168; ">お店一覧</p>
          <% end %>

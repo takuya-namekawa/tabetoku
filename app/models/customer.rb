@@ -8,6 +8,7 @@ class Customer < ApplicationRecord
   has_many :orders
   has_many :item_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
 
   def active_for_authentication?
     super && (is_active == true)

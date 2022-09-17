@@ -1,0 +1,27 @@
+<div class="container mt-5 mb-4">
+  <div class="row">
+    <div class="col-12">
+      <h4 class="text-center font-weight-bold" style="color: #6e470c; ">
+      通知一覧</h4>
+    </div>
+  </div>
+</div>
+<div class= "container mb-5 pb-5">
+   <div class="row ">
+     <div class=" col-8 offset-2 text-center bg-white shadow-sm pt-2 pb-4 mb-3 ">
+       <% if @notifications.exists? %>
+          <% @notifications.each do |notification| %>
+             <table>
+               <tr>
+                 <td><%= notification_form(notification) %><span class="moderate-font"><%= " (#{time_ago_in_words(notification.created_at)} 前)" %></span></td><br>
+               </tr>
+             </table>
+          <% end %>
+        <% else %>
+          <div class= "container mb-2 pb-5">
+            <p class="mt-5">通知はありません</p>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</div>

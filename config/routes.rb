@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+ 
   # 顧客用
   # URL /customers/sign_in ...
   devise_for :customers,skip: [:passwords], controllers: {
@@ -66,6 +67,7 @@ Rails.application.routes.draw do
     resources :customers, only: [:edit, :show, :update] do
       patch 'out'
     end
+    resources :notifications, only: :index
   end
 
 end

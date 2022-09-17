@@ -6,7 +6,7 @@ class Admin < ApplicationRecord
   has_many :items, dependent: :destroy
   has_many :reserves, dependent: :destroy
   has_many :favorites, dependent: :destroy
-
+  has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
@@ -34,7 +34,5 @@ class Admin < ApplicationRecord
       admin.name = "guestadmin"
     end
   end
-
-
 
 end
