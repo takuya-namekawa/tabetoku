@@ -13,7 +13,11 @@
           <% @notifications.each do |notification| %>
              <table>
                <tr>
-                 <td><%= notification_form(notification) %><span class="moderate-font"><%= " (#{time_ago_in_words(notification.created_at)} 前)" %></span></td><br>
+                  <td><%= notification_form(notification) %><span class="moderate-font"><%= " (#{time_ago_in_words(notification.created_at)} 前)" %></span></td><br>
+                  <td><%= link_to admin_notification_new_mail_path(notification), class: 'font-weight-bold ' do %>
+                      メールを送信する<i class="fas fa-paper-plane"></i>
+                      <% end %>
+                  </td>
                </tr>
              </table>
           <% end %>

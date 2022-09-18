@@ -50,7 +50,7 @@
                 <%= f.select :amount,@item_inventory,{include_blank: '個数選択'},required:true%>&emsp;
                 <%= f.submit 'カートに入れる' ,class: 'btn btn-danger btn-sm'%><% end %>
                <% else %>
-                 <h4>sold-out</h4>
+                 <h5 class="text-danger">sold-out</h5>
                <% end %>
                <%= link_to cart_items_path , class: "text-reset" do %>
                <i class="fas fa-shopping-cart "></i> カートに戻る

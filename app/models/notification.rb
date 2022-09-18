@@ -6,4 +6,9 @@ class Notification < ApplicationRecord
 	belongs_to :visiter, class_name: 'Customer', foreign_key: 'visiter_id', optional: true
 	belongs_to :visited, class_name: 'Admin', foreign_key: 'visited_id', optional: true
 
+	def customer
+		# Notification.customerときた場合、ユーザー情報を返す
+		Customer.find(visiter_id)
+	end
+
 end
