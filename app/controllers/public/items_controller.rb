@@ -5,6 +5,15 @@ class Public::ItemsController < ApplicationController
   def index
     @items = Item.page(params[:page])
     @genres = Genre.all
+
+  if params[:top]
+     @items = Item.top.page(params[:page])
+  elsif params[:old]
+     @items = Item.old.page(params[:page])
+  else
+     @items = Item.page(params[:page])
+  end
+
   end
 
   def show

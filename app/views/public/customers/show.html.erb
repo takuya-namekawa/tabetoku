@@ -50,20 +50,16 @@
           </div>
         </div>
       </div>
-        <table class="table">
-            <tr>
-              <% if @favorite_list.present? %>
-                <%  @favorite_list.each do |admin| %>
-                  <td>
-                    <%= link_to  admin_path(admin) , class: "text-decoration-none" do %>
-                    <%= image_tag admin.get_profile_image(80,80) %><br>
-                    <% end %>
-                    <p class="font-weight-bold"><%= admin.name %></p>
-                  </td>
-                <% end %>
-              <% end %>
-            </tr>
-        </table>
+        <div class="d-flex ">
+          <% if @favorite_list.present? %>
+            <%  @favorite_list.each do |admin| %>
+              <%= link_to  admin_path(admin) , class: "text-decoration-none" do %>
+              <%= image_tag admin.get_profile_image(80,80) %><br>
+              <% end %><br>
+              <p class="font-weight-bold w-25 align-self-end"><%= admin.name %></p>
+            <% end %>
+          <% end %>
+        </div>
     </div>
     </div>
     <div class="col-12">

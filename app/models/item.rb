@@ -19,5 +19,7 @@ class Item < ApplicationRecord
   validates :price,presence:true
   validates :inventory,presence:true
 
+  scope :top, -> {order(created_at: :desc)}
+  scope :old, -> {order(created_at: :asc)}
 
 end

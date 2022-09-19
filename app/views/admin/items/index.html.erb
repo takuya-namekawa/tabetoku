@@ -33,12 +33,12 @@
 							<td><%= item.genre.name %></td>
 							<td>
 								<% if item.is_ordered %>
-					            	<div class='text-success'>Sale</div>
-					            <% else %>
-					            	<div class="text-danger">Sold-Out</div>
-					            <% end %>
-						            <%= link_to  edit_admin_item_path(item), class: 'btn- btn-outline-dark ' do  %>
-						            	商品を編集する<i class="fas fa-edit"></i>
+			            	<div class='text-success'>Sale</div>
+			            <% else %>
+			            	<div class="text-danger">Sold-Out</div>
+			            <% end %>
+			            <%= link_to  edit_admin_item_path(item), class: 'btn- btn-outline-dark ' do  %>
+			            	商品を編集する<i class="fas fa-edit"></i>
 									<% end %>
 								<% end %>
 							</td>
@@ -48,6 +48,3 @@
 		</div>
 	</div>
 </div>
-
-
-

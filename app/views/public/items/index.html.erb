@@ -18,11 +18,14 @@
   </div>
 </div>
 <%= render "genre_list", genres: @genres %>
-<div class="container ">
+<div class="container mt-2">
   <div class="row">
     <div class="col-12">
       <p class="font-weight-bold border-bottom  border-dark" style="color: #6e470c; ">
-       商品数(<%= @items.count %>)件<p>
+        商品数(<%= Item.count %>)件
+        | <%= link_to '新着順', items_path(top: "true") , class: "text-reset"%>
+        | <%= link_to '商品登録順', items_path(old: "true") , class: "text-reset"%>
+      <p>
     </div>
   </div>
 </div>

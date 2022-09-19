@@ -1,52 +1,70 @@
-<div class="container mt-5 mb-4">
-  <div class="row">
-    <div class="col-12">
-      <h4 class="text-center font-weight-bold" style="color: #6e470c; ">
-      予約一覧</h4>
+<% if @reserves.first %>
+  <div class="container mt-5 mb-4">
+    <div class="row">
+      <div class="col-12">
+        <h4 class="text-center font-weight-bold" style="color: #6e470c; ">
+        予約一覧</h4>
+      </div>
     </div>
   </div>
-</div>
-<div class="container mb-5 pb-5">
-  <div class="row">
-    <div class="col">
-      <table class="table text-nowrap mb-5 pb-5 ">
-          <thead>
-             <tr>
-               <th>注文日時</th>
-               <th>会員名</th>
-               <th>商品名 × 注文個数</th>
-               <th>合計金額(税込)</th>
-               <th>来店ステータス</th>
-             </tr>
-          </thead>
-          <tbody>
-            <% @reserves.each do |reserve| %>
-              <tr>
-                <td><%= reserve.created_at.strftime("%Y年%-m月%-d日%H時%M分")  %></td>
-                <td>
-                  <%= link_to  admin_customer_path(reserve.order.customer) , class: "text-reset" do %>
-                  <%= reserve.order.customer.name %>
-                  <% end %>
-                </td>
-                <td> <% reserve.cart_data_hash.each do |item| %>
-                  <%= item[:name] %> × <%= item[:amount] %>
-                  <% end %>
-                </td>
-                <td><%= reserve.total_payment %>円</td>
-                <td><% if reserve.visit_status %>
-                  <div class='text-secondary'>来店済み</div>
-                  <% else %>
-                  <div class="text-success">来店予定</div>
-                  <% end %>
-                </td>
-                <td><%= link_to "予約の詳細を見る" ,  admin_reserve_path(reserve) , class: "text-reset" %></td>
-              </tr>
-            <% end %>
-          </tbody>
-      </table>
+  <div class="container mb-5 pb-5">
+    <div class="row">
+      <div class="col">
+        <table class="table text-nowrap mb-5 pb-5 ">
+            <thead>
+               <tr>
+                 <th>注文日時</th>
+                 <th>会員名</th>
+                 <th>商品名 × 注文個数</th>
+                 <th>合計金額(税込)</th>
+                 <th>来店ステータス</th>
+               </tr>
+            </thead>
+            <tbody>
+              <% @reserves.each do |reserve| %>
+                <tr>
+                  <td><%= reserve.created_at.strftime("%Y年%-m月%-d日%H時%M分")  %></td>
+                  <td>
+                    <%= link_to  admin_customer_path(reserve.order.customer) , class: "text-reset" do %>
+                    <%= reserve.order.customer.name %>
+                    <% end %>
+                  </td>
+                  <td> <% reserve.cart_data_hash.each do |item| %>
+                    <%= item[:name] %> × <%= item[:amount] %>
+                    <% end %>
+                  </td>
+                  <td><%= reserve.total_payment %>円</td>
+                  <td><% if reserve.visit_status %>
+                    <div class='text-secondary'>来店済み</div>
+                    <% else %>
+                    <div class="text-success">来店予定</div>
+                    <% end %>
+                  </td>
+                  <td><%= link_to "予約の詳細を見る" ,  admin_reserve_path(reserve) , class: "text-reset" %></td>
+                </tr>
+              <% end %>
+            </tbody>
+        </table>
+      </div>
     </div>
   </div>
-</div>
-<div class="pagination justify-content-center ">
-  <%= paginate @reserves %>
-</div>
+  <div class="pagination justify-content-center ">
+    <%= paginate @reserves %>
+  </div>
+ <% else %>
+   <div class="container mt-5 mb-5">
+    <div class="row">
+      <div class="col-12">
+        <h4 class="text-center font-weight-bold" style="color: #6e470c; ">
+        予約一覧</h4>
+      </div>
+    </div>
+  </div>
+  <div class= "container mb-5 pb-5">
+   <div class="row ">
+    <div class=" col-8 offset-2 text-center bg-white shadow-sm pt-2 pb-4 mb-3 ">
+	    <p class="text-center mb-5 pt-5">予約はありません</p>
+    </div>
+   </div>
+ </div>
+<% end %>
