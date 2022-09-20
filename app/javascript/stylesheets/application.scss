@@ -74,3 +74,12 @@ h1 {
 .sub-main:hover img {
 	margin-left:		50%;
 }
+
+@media (max-width:576px){
+    table td,table th{ display:block; }
+
+}
+@media (min-width:576px){
+    table td,table th{ display:table-cell; }
+}
+

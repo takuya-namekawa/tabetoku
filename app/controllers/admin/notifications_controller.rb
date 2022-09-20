@@ -15,8 +15,15 @@ class Admin::NotificationsController < ApplicationController
   def send_mail
    	@notifications = current_admin.passive_notifications
    	@notice_record = @notifications.find(params[:notification_id])
-    @mail_title = params[:mail_title]
-    @mail_content = params[:mail_content]
-    ContactMailer.send_mail(@mail_title, @mail_content, @notice_record).deliver
+    @shop_info_mail = ShopInfoMail.new(title: params[:mail_title], content: params[:mail_content])
+    @mail_title = @shop_info_mail.title
+    @mail_content = @shop_info_mail.content
+    if @shop_info_mail.valid?
+      ContactMailer.send_mail(@mail_title, @mail_content, @notice_record).deliver
+    else
+      flash.now[:alert] = "不正な入力です。"
+      render 'admin/notifications/new_mail'
+    end
+
   end
 end

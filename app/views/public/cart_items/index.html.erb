@@ -9,42 +9,45 @@
 </div>
 <div class="container pb-3　mt-3">
   <div class="row">
-    <table class="table bg-white border border-5 shadow-sm">
-      <thead>
-        <tr>
-          <th>店舗</th>
-          <th>商品</th>
-          <th>商品名</th>
-          <th>数量</th>
-          <th>提供価格(税込)</th>
-          <th>小計</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @cart_items.each do |cart_item| %>
+    <div class="col-md-12 col-sm-12 col-12">
+      <table class="table bg-white border border-5 shadow-sm">
+        <thead>
           <tr>
-            <td><%= image_tag cart_item.item.admin.get_profile_image(100,100)%></td>
-            <td><%= image_tag cart_item.item.get_profile_image(120,120)%></td>
-            <td><%= cart_item.item.name %></td>
-            <td><%= cart_item.amount %>個</td>
-            <td><%= cart_item.item.half_price %>円</td>
-            <td><%= (cart_item.item.half_price).floor * cart_item.amount %>円</td>
-            <%= form_with model: cart_item, url: cart_item_path(cart_item)  do |f| %>
-              <%= f.hidden_field :item_id, value: cart_item.item.id %>
-            <% end %>
-            <td><%= link_to "削除" , cart_item_path(cart_item), method: :delete, data: {confirm: "本当に消しますか？"}, class: " text-reset font-weight-bold" %></td>
+            <th>店舗</th>
+            <th>商品</th>
+            <th>商品名</th>
+            <th>数量</th>
+            <th>提供価格(税込)</th>
+            <th>小計</th>
           </tr>
-        <% end %>
-      </tbody>
-      </table>
-        <div class="container text-center  bg-white  pt-4 pb-4  border border-5 shadow-sm">
-          <div class="row">
-            <div class="col-4"><%= link_to "買い物を続ける", items_path , class: " text-reset font-weight-bold"%></div>
-            <div class="col-4"><%= link_to "情報入力に進む",  confirm_path, class: "btn btn-danger btn-block" %></div>
-            <h5 class="col-4"> 合計金額 <%= @total_price %>円</h5>
+        </thead>
+        <tbody>
+          <% @cart_items.each do |cart_item| %>
+            <tr>
+              <td><%= image_tag cart_item.item.admin.get_profile_image(100,100)%></td>
+              <td><%= image_tag cart_item.item.get_profile_image(120,120)%></td>
+              <td><%= cart_item.item.name %></td>
+              <td><%= cart_item.amount %>個</td>
+              <td><%= cart_item.item.half_price %>円</td>
+              <td><%= (cart_item.item.half_price).floor * cart_item.amount %>円</td>
+              <%= form_with model: cart_item, url: cart_item_path(cart_item)  do |f| %>
+                <%= f.hidden_field :item_id, value: cart_item.item.id %>
+              <% end %>
+              <td><%= link_to "削除" , cart_item_path(cart_item), method: :delete, data: {confirm: "本当に消しますか？"}, class: " text-reset font-weight-bold" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+        </table>
+
+          <div class="container text-center  bg-white  pt-4 pb-4  border border-5 shadow-sm">
+            <div class="row">
+              <div class="col-4"><%= link_to "買い物を続ける", items_path , class: " text-reset font-weight-bold"%></div>
+              <div class="col-4"><%= link_to "情報入力に進む",  confirm_path, class: "btn btn-danger btn-block" %></div>
+              <h5 class="col-4"> 合計金額 <%= @total_price %>円</h5>
+            </div>
           </div>
-        </div>
-        </div>
+      </div>
+    </div>
 <% else %>
       	<div class="container  bg-white m-5 pt-5 pb-5 border border-5">
       		<h5 class="text-center mb3 ">カートに商品が入っていません</h5>

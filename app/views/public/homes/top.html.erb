@@ -15,7 +15,7 @@
 </div>
 <div class="container mt-4 mb-2">
   <div class="row">
-    <div class="col-3">
+    <div class="d-none d-md-block col-md-3">
       <p class="text-center font-weight-bold border-bottom  border-dark " style="color: #6e470c; ">
         ジャンルから探す
       </p>
@@ -30,7 +30,7 @@
         <% end %>
       </div>
     </div>
-    <div class="col-9 text-center">
+    <div class="col-12 col-md-9 text-center">
       <p class=" font-weight-bold border-bottom  border-dark " style="color: #6e470c; ">
         新しく登録された商品
       </p>
@@ -46,9 +46,9 @@
          <p class=" font-weight-bold border-bottom  border-dark " style="color: #6e470c; ">
            お店(新着順)
          </p>
-         <% @admins.first(5).each do |admin| %>
+         <% @admins.first(6).each do |admin| %>
            <%= link_to  admin_path(admin) , class: "text-decoration-none" do %>
-             <%= image_tag admin.get_profile_image(150, 150) , class: "mr-1" %>
+             <%= image_tag admin.get_profile_image(120, 120) , class: "mr-1" %>
            <% end %>
          <% end %>
          <div class="text-right pt-3 pb-3">

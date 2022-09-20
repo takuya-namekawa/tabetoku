@@ -29,10 +29,12 @@ class Admin < ApplicationRecord
   end
 
   def self.guest
-    find_or_create_by!(name: 'guestadmin' ,email: 'guest@example.com', address: 'guestaddress', phone_number: '0') do |admin|
-      admin.password = SecureRandom.urlsafe_base64
-      admin.name = "guestadmin"
+    find_or_initialize_by(email: 'guest@guest.com') do |admin|
+      admin.attributes = { password: SecureRandom.urlsafe_base64 ,
+                           name: "guestadmin",
+                           address: "guestaddress",
+                           phone_number: "0" }
+      admin.save
     end
   end
-
 end

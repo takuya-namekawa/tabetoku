@@ -8,12 +8,12 @@
 <% end %>
 <div class="container mt-5">
   <div class="row">
-    <div class="text-center col-sm-8">
+    <div class="text-center col-sm-12 col-md-8">
       <%= link_to  admin_path(@item.admin) , class: "text-decoration-none" do %>
       <%= image_tag @item.get_profile_image(700,700), class: 'img-fluid'%>
       <% end %>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-12 col-md-4">
       <table class="table table-borderless">
          <tr>
            <td>
@@ -72,7 +72,7 @@
 </div>
 <div class="container mb-4">
   <div class="row">
-    <div class="col-8  bg-white border border-secondary rounded shadow-sm">
+    <div class="col-md-12 col-12 col-lg-8  bg-white border border-secondary rounded shadow-sm">
       <% @item.item_comments.each do |item_comment| %>
         <%= item_comment.created_at.strftime("%Y年%-m月%-d日%H時%M分")  %><br>
         <%= item_comment.customer.name %><br>
@@ -98,7 +98,7 @@
           <% end %>
         <% end %>
     </div>
-    <div class="col-4 text-center ">
+    <div class="col-md-12 col-12  col-lg-4 text-center ">
       <%= form_with model: [@item, @item_comment] do |f| %>
         <div class="form-group row justify-content-center" id="star">
           <%= f.label :star,'評価 ', class:'col-md-3 col-form-label' %>
@@ -115,7 +115,7 @@
           });
         </script>
       <%= f.text_area :comment, rows: '5', placeholder: "クチコミ本文を入れてください" , class: "form-control"%><br>
-      <% if customer_signed_in? || admin_signed_in? %>
+      <% if customer_signed_in?  %>
         <%= f.submit "クチコミを投稿する" ,class: 'btn btn-danger '%>
       <% else %>
         <p class="text-center font-weight-bold " style="color: #6e470c; ">口コミを投稿する際は会員登録をお願いします</p>
