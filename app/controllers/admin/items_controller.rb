@@ -13,7 +13,7 @@ class Admin::ItemsController < ApplicationController
     @item = Item.new(item_params)
     @item.admin_id = current_admin.id
     if @item.save
-      redirect_to  admin_items_path, notice: "商品を新しく登録しました"
+      redirect_to admin_items_path, notice: "商品を新しく登録しました"
     else
       @admin = current_admin
       @genre = Genre.new
@@ -36,9 +36,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   private
-
-  def item_params
-    params.require(:item).permit(:genre_id, :admin_id, :name, :explanation, :half_price, :price, :inventory, :is_ordered, :profile_image)
-  end
-
+    def item_params
+      params.require(:item).permit(:genre_id, :admin_id, :name, :explanation, :half_price, :price, :inventory, :is_ordered, :profile_image)
+    end
 end

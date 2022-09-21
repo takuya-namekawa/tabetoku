@@ -18,9 +18,7 @@ class Public::HomesController < ApplicationController
   end
 
   private
-
-  def set_search
-    @search = Item.ransack(params[:q])
-  end
-
+    def set_search
+      @search = Item.ransack(params[:q])
+    end
 end

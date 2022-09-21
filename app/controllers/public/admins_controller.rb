@@ -21,13 +21,11 @@ class Public::AdminsController < ApplicationController
   end
 
   private
+    def set_search
+      @search = Item.ransack(params[:q])
+    end
 
-  def set_search
-    @search = Item.ransack(params[:q])
-  end
-
-  def event_params
-     params.require(:event).permit(:title, :content, :address, :latitude, :longitude)
-  end
-
+    def event_params
+      params.require(:event).permit(:title, :content, :address, :latitude, :longitude)
+    end
 end

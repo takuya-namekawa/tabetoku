@@ -1,17 +1,17 @@
 <% if  @genre.errors.any? %>
   <ul class="text-center alert alert-danger"style=" list-style: none; ">
     <%=  @genre.errors.count %>件のエラーが発生しました
-      <% @genre.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+    <% @genre.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
   </ul>
 <% end %>
 <% if  @item.errors.any? %>
   <ul class="text-center alert alert-danger"style=" list-style: none; ">
     <%=  @item.errors.count %>件のエラーが発生しました
-      <% @item.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+    <% @item.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
   </ul>
 <% end %>
 <div class="container mt-4 mb-3">
@@ -33,7 +33,7 @@
           <table class="table table-borderless">
             <tr>
               <td><p class="font-weight-bold">店舗名</p><%= @admin.name %></td>
-                <td><p class="font-weight-bold">店舗電話番号</p><%= @admin.phone_number %></td>
+              <td><p class="font-weight-bold">店舗電話番号</p><%= @admin.phone_number %></td>
             </tr>
             <tr>
               <td><p class="font-weight-bold">店舗住所</p><%= @admin.address %></td>
@@ -46,7 +46,7 @@
               <td>
                 <% if @admin.name != "guestadmin" %>
                   <%= link_to  edit_admin_admin_path(@admin) , class: 'btn- btn-outline-dark ' do  %>
-                  お店の情報を編集する<i class="fas fa-edit"></i>
+                    お店の情報を編集する<i class="fas fa-edit"></i>
                   <% end %>
                 <% end %>
               </td>
@@ -157,14 +157,14 @@
             </thead>
             <tbody>
               <% @genres.each do |genre| %>
-              <tr>
-                <th><%= genre.name %></th>
-                <th>
-                  <%= link_to  edit_admin_genre_path(genre), class: 'btn- btn-outline-secondary ' do %>
-                    編集<i class="fas fa-edit"></i>
-                  <% end %>
-                </th>
-              </tr>
+                <tr>
+                  <th><%= genre.name %></th>
+                  <th>
+                    <%= link_to  edit_admin_genre_path(genre), class: 'btn- btn-outline-secondary ' do %>
+                      編集<i class="fas fa-edit"></i>
+                    <% end %>
+                  </th>
+                </tr>
               <% end %>
             </tbody>
           </table>

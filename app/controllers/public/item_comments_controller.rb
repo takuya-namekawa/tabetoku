@@ -6,7 +6,7 @@ class Public::ItemCommentsController < ApplicationController
     comment = current_customer.item_comments.new(item_comments_params)
     comment.item_id = item.id
     if comment.save
-      redirect_to  item_path(item), notice: "クチコミを投稿しました"
+      redirect_to item_path(item), notice: "クチコミを投稿しました"
     else
       @item = item
       @cart_item = @item.cart_items
@@ -15,7 +15,7 @@ class Public::ItemCommentsController < ApplicationController
         @item_inventory.push(i)
       end
       @item_comment = comment
-      render  "public/items/show"
+      render "public/items/show"
     end
   end
 
@@ -25,17 +25,14 @@ class Public::ItemCommentsController < ApplicationController
   end
 
   private
-
-  def user_authenticate
-    if customer_signed_in? || admin_signed_in?
-    else
-       redirect_to root_path
+    def user_authenticate
+      if customer_signed_in? || admin_signed_in?
+      else
+        redirect_to root_path
+      end
     end
 
-  end
-
-  def item_comments_params
-    params.require(:item_comment).permit(:comment, :star)
-  end
-
+    def item_comments_params
+      params.require(:item_comment).permit(:comment, :star)
+    end
 end

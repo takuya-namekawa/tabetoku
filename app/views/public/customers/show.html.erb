@@ -2,7 +2,8 @@
   <div class="row">
     <div class="col-12">
       <h4 class="text-center font-weight-bold" style="color: #6e470c; ">
-      マイページ</h4>
+        マイページ
+      </h4>
     </div>
   </div>
 </div>
@@ -13,104 +14,106 @@
         <div class="row">
           <div class="col-12">
             <p class="font-weight-bold border-bottom  border-dark" style="color: #6e470c; ">
-            会員情報<p>
+              会員情報
+            <p>
           </div>
         </div>
       </div>
-        <table class="table ">
-          <tr>
-            <td class="font-weight-bold">会員名</td>
-            <td><%= @customer.name %></td>
-          </tr>
-          <tr>
-            <td class="font-weight-bold">フリガナ</td>
-            <td><%= @customer.name_kana %></td>
-          </tr>
-          <tr>
-            <td class="font-weight-bold">電話番号</td>
-            <td><%= @customer.phone_number %></td>
-          </tr>
-          <tr>
-            <td class="font-weight-bold">メールアドレス</td>
-            <td><%= @customer.email %></td>
-          </tr>
-          <tr>
-            <% if @customer.name != "guestcustomer" %>
+      <table class="table ">
+        <tr>
+          <td class="font-weight-bold">会員名</td>
+          <td><%= @customer.name %></td>
+        </tr>
+        <tr>
+          <td class="font-weight-bold">フリガナ</td>
+          <td><%= @customer.name_kana %></td>
+        </tr>
+        <tr>
+          <td class="font-weight-bold">電話番号</td>
+          <td><%= @customer.phone_number %></td>
+        </tr>
+        <tr>
+          <td class="font-weight-bold">メールアドレス</td>
+          <td><%= @customer.email %></td>
+        </tr>
+        <tr>
+          <% if @customer.name != "guestcustomer" %>
             <td class="font-weight-bold"><%= link_to "会員編集を編集する" , edit_customer_path(@customer) , class: " text-reset"%></td>
-            <% end %>
-          </tr>
-        </table>
+          <% end %>
+        </tr>
+      </table>
     </div>
     <div class="col-md-7 col-sm-12 col-12">
-       <div class="container">
+      <div class="container">
         <div class="row">
           <div class="col-12">
             <p class="font-weight-bold border-bottom  border-dark" style="color: #6e470c; ">
-            <i class="fas fa-star"></i> お気に入りのお店<p>
+              <i class="fas fa-star"></i> お気に入りのお店
+            <p>
           </div>
         </div>
       </div>
-          <% if @favorite_list.present? %>
-            <%  @favorite_list.each do |admin| %>
-              <%= link_to  admin_path(admin) , class: "text-decoration-none" do %>
-              <%= image_tag admin.get_profile_image(80,80) ,class: "mr-2"%>
-              <% end %>
-            <% end %>
+      <% if @favorite_list.present? %>
+        <%  @favorite_list.each do |admin| %>
+          <%= link_to  admin_path(admin) , class: "text-decoration-none" do %>
+            <%= image_tag admin.get_profile_image(80,80) ,class: "mr-2"%>
           <% end %>
-    </div>
-    </div>
-    <div class="container mt-3 mb-3">
-      <div class="row">
-        <div class="col">
-    <div class ="d-md-none font-weight-bold border-bottom  border-dark" style="color: #6e470c; ">
-    <%= link_to "予約一覧を見る" ,responsive_path ,class: "text-reset"%>
-   </div>
-    </div>
-    </div>
-    </div>
-    <div class="col-12 d-none d-md-block">
-       <div class="container mt-3">
-        <div class="row">
-          <div class="col-12">
-            <p class="font-weight-bold border-bottom  border-dark " style="color: #6e470c; ">
-            予約一覧<p>
-          </div>
-        </div>
-      </div>
-         <table class="table">
-            <thead>
-             <tr>
-               <th>予約日時</th>
-               <th>店舗名</th>
-               <th>ご来店予定時間</th>
-               <th>来店ステータス</th>
-               <th>合計金額(税込)</th>
-               <th>商品名×予約個数</th>
-             </tr>
-           </thead>
-           <tbody>
-              <% @orders.each do |order| %>
-                  <% order.reserves.each do |reserve| %>
-                    <tr>
-                      <td><%= reserve.created_at.strftime("%-m月%-d日%H時%M分")  %></td>
-                      <td><%= reserve.admin.name %></td>
-                      <td><%= reserve.visit.strftime("%-m月%-d日%H時%M分")  %></td>
-                      <td><% if reserve.visit_status %>
-                        <div class='text-secondary'>来店済み </div>
-                        <% else %>
-                        <div class="text-success">来店予定 </div>
-                        <% end %>
-                      </td>
-                      <td><%= reserve.total_payment %>円</td>
-                      <% reserve.cart_data_hash.each do |item| %>
-                        <td><%= item[:name] %> × <%= item[:amount] %></td>
-                      <% end %>
-                    </tr>
-                <% end %>
-              <% end %>
-           </tbody>
-         </table>
+        <% end %>
+      <% end %>
     </div>
   </div>
+  <div class="container mt-3 mb-3">
+    <div class="row">
+      <div class="col">
+        <div class ="d-md-none font-weight-bold border-bottom  border-dark" style="color: #6e470c; ">
+          <%= link_to "予約一覧を見る" ,responsive_path ,class: "text-reset"%>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 d-none d-md-block">
+     <div class="container mt-3">
+    　  <div class="row">
+        <div class="col-12">
+          <p class="font-weight-bold border-bottom  border-dark " style="color: #6e470c; ">
+            予約一覧
+          <p>
+        </div>
+     　 </div>
+     </div>
+       <table class="table">
+         <thead>
+           <tr>
+             <th>予約日時</th>
+             <th>店舗名</th>
+             <th>ご来店予定時間</th>
+             <th>来店ステータス</th>
+             <th>合計金額(税込)</th>
+             <th>商品名×予約個数</th>
+           </tr>
+         </thead>
+         <tbody>
+          <% @orders.each do |order| %>
+            <% order.reserves.each do |reserve| %>
+              <tr>
+                <td><%= reserve.created_at.strftime("%-m月%-d日%H時%M分")  %></td>
+                <td><%= reserve.admin.name %></td>
+                <td><%= reserve.visit.strftime("%-m月%-d日%H時%M分")  %></td>
+                <td>
+                  <% if reserve.visit_status %>
+                    <div class='text-secondary'>来店済み </div>
+                  <% else %>
+                    <div class="text-success">来店予定 </div>
+                  <% end %>
+                </td>
+                <td><%= reserve.total_payment %>円</td>
+                <% reserve.cart_data_hash.each do |item| %>
+                  <td><%= item[:name] %> × <%= item[:amount] %></td>
+                <% end %>
+              </tr>
+            <% end %>
+          <% end %>
+         </tbody>
+       </table>
+  </div>
 </div>
-

@@ -1,5 +1,4 @@
 class Reserve < ApplicationRecord
-
   # has_many :billings, dependent: :destroy
   belongs_to :admin
   belongs_to :order
@@ -10,6 +9,6 @@ class Reserve < ApplicationRecord
   end
   # serialize :cart_data, Array
   def cart_data_hash
-   eval("[" + self.cart_data.gsub("} {", "}, {") + "]")
+    eval("[" + self.cart_data.gsub("} {", "}, {") + "]")
   end
 end

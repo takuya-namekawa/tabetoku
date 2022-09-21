@@ -21,7 +21,7 @@
           <tr>
             <td><p class="font-weight-bold">メールアドレス</p></td>
             <td><%= @customer.email %></td>
-          <tr>
+          </tr>
           <tr>
             <td><p class="font-weight-bold">電話番号</p></td>
             <td><%= @customer.phone_number %></td>
@@ -35,12 +35,12 @@
           </td>
             <td>
               <%= link_to edit_admin_customer_path(@customer) , class: 'btn- btn-outline-dark ' do  %>
-              会員の情報を編集する<i class="fas fa-edit"></i>
+                会員の情報を編集する<i class="fas fa-edit"></i>
               <% end %>
             </td>
             <td>
               <%= link_to admin_customer_out_path(@customer), method: :patch , "data-confirm" => "OKを押すと退会処理がされます。本当によろしいですか？", class: 'btn- btn-outline-dark ' do  %>
-              会員を退会させる<i class="fas fa-user-slash"></i>
+                会員を退会させる<i class="fas fa-user-slash"></i>
               <% end %>
             </td>
           </tr>

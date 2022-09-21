@@ -16,29 +16,31 @@
       ジャンルから探す</p>
       <div class="card">
         <% @genres.each do |genre| %>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item text-center" style="color: #6e470c; "> <%= link_to  item_genre_items_path(genre) , class: "text-decoration-none text-reset" do %>
-          <i class="fas fa-tag"></i></i> <%= genre.name %>
-          <% end %></li>
-        </ul>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item text-center" style="color: #6e470c; "><%= link_to  item_genre_items_path(genre) , class: "text-decoration-none text-reset" do %>
+              <i class="fas fa-tag"></i></i> <%= genre.name %>
+            </li> 
+            <% end %>
+          </ul>
         <% end %>
       </div>
     </div>
     <div class="col-9">
       <p class="text-center font-weight-bold border-bottom  border-dark " style="color: #6e470c; ">
-      新着順(<%= @admins.count %>)件</p>
+        新着順(<%= @admins.count %>)件
+      </p>
       <div class="table">
         <tbody>
           <% @admins.each do |admin| %>
             <tr>
               <td>
                <%= link_to  admin_path(admin) , class: "text-decoration-none" do %>
-               <%= image_tag admin.get_profile_image(80, 80), class: "mr-3 mb-2 "%>
+                 <%= image_tag admin.get_profile_image(80, 80), class: "mr-3 mb-2 "%>
                <% end %>
               </td>
               <td>
                 <%= link_to  admin_path(admin) , class: "text-reset" do %>
-                <%= admin.name %>
+                  <%= admin.name %>
                 <% end %>
               </td>
               <td><%= admin.address %></td>

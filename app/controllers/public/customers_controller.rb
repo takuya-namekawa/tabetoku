@@ -22,15 +22,14 @@ class Public::CustomersController < ApplicationController
   end
 
   private
-
-  def customer_params
-    params.require(:customer).permit(:name, :name_kana, :phone_number, :email)
-  end
-
-  def ensure_guest_customer
-    @customer = current_customer
-    if @customer.name == "guestcustomer"
-      redirect_to root_path , alert: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+    def customer_params
+      params.require(:customer).permit(:name, :name_kana, :phone_number, :email)
     end
-  end
+
+    def ensure_guest_customer
+      @customer = current_customer
+      if @customer.name == "guestcustomer"
+        redirect_to root_path, alert: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
+      end
+    end
 end

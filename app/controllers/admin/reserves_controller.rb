@@ -1,13 +1,12 @@
 class Admin::ReservesController < ApplicationController
   before_action :authenticate_admin!
-  
+
   def index
     @reserves = current_admin.reserves.page(params[:page])
   end
 
   def show
     @reserve = Reserve.find(params[:id])
-
   end
 
   def update
@@ -17,9 +16,7 @@ class Admin::ReservesController < ApplicationController
   end
 
   private
-
-  def reserve_params
-    params.require(:reserve).permit( :visit_status )
-  end
-
+    def reserve_params
+      params.require(:reserve).permit(:visit_status)
+    end
 end

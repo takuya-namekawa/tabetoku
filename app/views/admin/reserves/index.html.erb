@@ -11,31 +11,30 @@
     <div class="row">
       <div class="col-md-12 col-sm-12 col-12">
         <table class="table mb-5 pb-5 table-striped">
-
-            <tbody>
-              <% @reserves.each do |reserve| %>
-                <tr>
-                  <td><%= reserve.created_at.strftime("%Y年%-m月%-d日%H時%M分")  %></td>
-                  <td>
-                    <%= link_to  admin_customer_path(reserve.order.customer) , class: "text-reset  border-bottom  border-dark text-decoration-none" do %>
+          <tbody>
+            <% @reserves.each do |reserve| %>
+              <tr>
+                <td><%= reserve.created_at.strftime("%Y年%-m月%-d日%H時%M分")  %></td>
+                <td>
+                  <%= link_to  admin_customer_path(reserve.order.customer) , class: "text-reset  border-bottom  border-dark text-decoration-none" do %>
                     <%= reserve.order.customer.name %>　様
-                    <% end %>
-                  </td>
-                  <td> <% reserve.cart_data_hash.each do |item| %>
+                  <% end %>
+                </td>
+                <td>
+                  <% reserve.cart_data_hash.each do |item| %>
                     <%= item[:name] %> × <%= item[:amount] %>
-                    <% end %>
-                  </td>
-
-                  <td><% if reserve.visit_status %>
-                    <div class='text-secondary'>来店済み</div>
+                  <% end %>
+                </td>
+                <td><% if reserve.visit_status %>
+                      <div class='text-secondary'>来店済み</div>
                     <% else %>
-                    <div class="text-success">来店予定</div>
+                      <div class="text-success">来店予定</div>
                     <% end %>
-                  </td>
-                  <td><%= link_to "予約の詳細を見る" ,  admin_reserve_path(reserve) , class: "text-reset" %></td>
-                </tr>
-              <% end %>
-            </tbody>
+                </td>
+                <td><%= link_to "予約の詳細を見る" ,  admin_reserve_path(reserve) , class: "text-reset" %></td>
+              </tr>
+            <% end %>
+          </tbody>
         </table>
       </div>
     </div>

@@ -3,7 +3,8 @@
   <div class="row">
     <div class="col-12">
       <p class="text-center font-weight-bold " style="color: #6e470c; "><i class="fas fa-shopping-cart "></i>
-      以下のお店のカートに商品が入っています<br>30分経過するとカートの商品が削除されます<p>
+        以下のお店のカートに商品が入っています<br>30分経過するとカートの商品が削除されます
+      <p>
     </div>
   </div>
 </div>
@@ -11,7 +12,6 @@
   <div class="row">
     <div class="col-md-12 col-sm-12 col-12">
       <table class="table bg-white border border-5 shadow-sm">
-
         <tbody>
           <% @cart_items.each do |cart_item| %>
             <tr>
@@ -28,36 +28,36 @@
             </tr>
           <% end %>
         </tbody>
-        </table>
-
-          <div class="container text-center  bg-white  pt-4 pb-4  border border-5 shadow-sm">
-            <div class="row">
-              <div class="col-4"><%= link_to "買い物を続ける", items_path , class: " text-reset font-weight-bold"%></div>
-              <div class="col-4"><%= link_to "情報入力に進む",  confirm_path, class: "btn btn-danger btn-block" %></div>
-              <h5 class="col-4"> 合計金額 <%= @total_price %>円</h5>
-            </div>
+      </table>
+        <div class="container text-center  bg-white  pt-4 pb-4  border border-5 shadow-sm">
+          <div class="row">
+            <div class="col-4"><%= link_to "買い物を続ける", items_path , class: " text-reset font-weight-bold"%></div>
+            <div class="col-4"><%= link_to "情報入力に進む",  confirm_path, class: "btn btn-danger btn-block" %></div>
+            <h5 class="col-4"> 合計金額 <%= @total_price %>円</h5>
           </div>
+        </div>
       </div>
     </div>
 <% else %>
-      	<div class="container  bg-white m-5 pt-5 pb-5 border border-5">
-      		<h5 class="text-center mb3 ">カートに商品が入っていません</h5>
-      		<div class="text-center pt-3 ">
-      			<%= link_to "商品一覧を見る", items_path , class: "text-reset"%>
-      		</div>
-  	    </div>
+  	<div class="container  bg-white m-5 pt-5 pb-5 border border-5">
+  		<h5 class="text-center mb3 ">カートに商品が入っていません</h5>
+  		<div class="text-center pt-3 ">
+  			<%= link_to "商品一覧を見る", items_path , class: "text-reset"%>
+  		</div>
+    </div>
 <% end %>
 </div>
 <div class="container mt-4 mb-2">
   <div class="row">
     <div class="col-12">
       <p class="text-center font-weight-bold border-bottom  border-dark " style="color: #6e470c; ">
-      新しく登録された商品</p>
+        新しく登録された商品
+      </p>
       <% @items.first(10).each do |item| %>
         <%= link_to  item_path(item.id)  , class: "text-decoration-none " do %>
           <%= image_tag item.get_profile_image(100, 100) , class: "pl-1 img-fluid "%>
+        <% end %>
       <% end %>
-    <% end %>
     </div>
   </div>
 </div>

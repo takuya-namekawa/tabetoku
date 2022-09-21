@@ -9,7 +9,7 @@
 <div class= "container">
    <div class="row ">
      <div class=" col-8 offset-2 text-center bg-white shadow-sm pt-4 pb-4 mb-3 ">
-         <div class="table ">
+       <div class="table ">
            <tr>
              <td>会員名</td>
              <td><%= @reserve.order.customer.name %></td><br>
@@ -22,43 +22,47 @@
              <td>お支払い方法</td>
              <td><%= Order.payment_methods_i18n[@reserve.order.payment_method] %></td>
            </tr>
-         </div>
-         <%= form_with model: @reserve, url: admin_reserve_path do |f| %>
-             <form>
-               <%= f.label :来店ステータス,class: "col-sm-3 col-form-label " %>
-               <div class="form-check form-check-inline">
-                 <%= f.radio_button :visit_status, false , checked: true %>来店予定
-               </div>
-               <div class="form-check form-check-inline">
-                 <%= f.radio_button :visit_status, true %>来店済み
-               </div>
-               <div class="pt-3">
-                 <%= f.submit "来店済みに変更する" ,class: "btn btn-secondary" %>
-               </div>
-            </form>
-        <% end %>
+       </div>
+       <%= form_with model: @reserve, url: admin_reserve_path do |f| %>
+           <form>
+             <%= f.label :来店ステータス,class: "col-sm-3 col-form-label " %>
+             <div class="form-check form-check-inline">
+               <%= f.radio_button :visit_status, false , checked: true %>来店予定
+             </div>
+             <div class="form-check form-check-inline">
+               <%= f.radio_button :visit_status, true %>来店済み
+             </div>
+             <div class="pt-3">
+               <%= f.submit "来店済みに変更する" ,class: "btn btn-secondary" %>
+             </div>
+          </form>
+      <% end %>
       </div>
     </div>
 </div>
 </div>
 <p class="text-center font-weight-bold " style="color: #6e470c; ">※商品をお渡しの際は商品名と個数をチェックBOXで確認する事をお勧め致します</p>
 <div class="container">
-    <div class="row">
-        <div class="col">
-          <table class="table">
-            <tr>
-              <% @reserve.cart_data_hash.each do |item| %>
-                <td><div class="form-check"><input class="form-check-input position-static" type="checkbox">
-                <%= item[:name]%></div>
-                </td>
-                <td><%= item[:half_price] %>円</td>
-                <td><div class="form-check"><input class="form-check-input position-static" type="checkbox">
-                <%= item[:amount] %>個</div>
-                </td>
-               <% end %>
-              <td>合計金額<%= @reserve.total_payment %>円</td>
-            </tr>
-          </table>
-        </div>
+  <div class="row">
+    <div class="col">
+      <table class="table">
+        <tr>
+          <% @reserve.cart_data_hash.each do |item| %>
+            <td>
+              <div class="form-check"><input class="form-check-input position-static" type="checkbox">
+                <%= item[:name]%>
+              </div>
+            </td>
+            <td><%= item[:half_price] %>円</td>
+            <td>
+              <div class="form-check"><input class="form-check-input position-static" type="checkbox">
+                <%= item[:amount] %>個
+              </div>
+            </td>
+           <% end %>
+          <td>合計金額<%= @reserve.total_payment %>円</td>
+        </tr>
+      </table>
     </div>
+  </div>
 </div>

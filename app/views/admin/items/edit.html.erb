@@ -1,9 +1,9 @@
 <% if  @item.errors.any? %>
   <ul class="text-center alert alert-danger"style=" list-style: none; ">
     <%=  @item.errors.count %>件のエラーが発生しました
-      <% @item.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+    <% @item.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
   </ul>
 <% end %>
 <div class="container mt-5 mb-3 ">
@@ -39,38 +39,38 @@
           </div>
           <div class="form-group row">
             <%= f.label :正規価格,class: "col-sm-3 col-form-label " %>
-            <div class="col-sm-9 pl-4 ">
-              <div class="form-check-inline">
-              <%= f.text_field :price, autofocus: true, class:"form-control ", id:"inputName"%> <label class="form-check-label" for="inlineRadio3">円</label>
+              <div class="col-sm-9 pl-4 ">
+                <div class="form-check-inline">
+                  <%= f.text_field :price, autofocus: true, class:"form-control ", id:"inputName"%> <label class="form-check-label" for="inlineRadio3">円</label>
+                </div>
               </div>
-            </div>
           </div>
           <div class="form-group row">
             <%= f.label :提供価格,class: "col-sm-3 col-form-label " %>
-            <div class="col-sm-9 pl-4 ">
-              <div class="form-check-inline">
-              <%= f.text_field :half_price, autofocus: true, class:"form-control ", id:"inputName"%> <label class="form-check-label" for="inlineRadio3">円</label>
+              <div class="col-sm-9 pl-4 ">
+                <div class="form-check-inline">
+                  <%= f.text_field :half_price, autofocus: true, class:"form-control ", id:"inputName"%> <label class="form-check-label" for="inlineRadio3">円</label>
+                </div>
               </div>
-            </div>
           </div>
           <div class="form-group row">
             <%= f.label :在庫数,class: "col-sm-3 col-form-label " %>
-            <div class="col-sm-9 pl-4 ">
-              <div class="form-check-inline">
-              <%= f.text_field :inventory, autofocus: true, class:"form-control ", id:"inputName"%>個<label class="form-check-label" for="inlineRadio3"></label>
+              <div class="col-sm-9 pl-4 ">
+                <div class="form-check-inline">
+                  <%= f.text_field :inventory, autofocus: true, class:"form-control ", id:"inputName"%>個<label class="form-check-label" for="inlineRadio3"></label>
+                </div>
               </div>
-            </div>
           </div>
           <div class="form-group row ">
             <%= f.label :販売ステータス,class: "col-sm-3 col-form-label " %>
-            <div class="col-sm-9 pl-4">
-              <div class="form-check form-check-inline">
-                <%= f.radio_button :is_ordered, true, checked: true %>Sale
-             </div>
-             <div class="form-check form-check-inline">
-               <%= f.radio_button :is_ordered, false %>Sold-Out
-             </div>
-            </div>
+              <div class="col-sm-9 pl-4">
+                <div class="form-check form-check-inline">
+                  <%= f.radio_button :is_ordered, true, checked: true %>Sale
+               </div>
+               <div class="form-check form-check-inline">
+                 <%= f.radio_button :is_ordered, false %>Sold-Out
+               </div>
+              </div>
           </div>
           <div class="form-group row">
             <%= f.label :商品画像 ,class: "col-sm-3 col-form-label " %>

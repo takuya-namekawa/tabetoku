@@ -10,11 +10,11 @@
   <div class="row">
     <div class="col-lg-5 col-md-12 col-sm-12">
       <%= image_tag @admin.get_profile_image(400,400), class: 'img-fluid mb-3'%>
-        <h6 class=" font-weight-bold" style="color: #6e470c; ">
-          <% if customer_signed_in? %>
-            <%= render 'public/favorites/favorite', admin: @admin %>
-          <% end %>
-        </h6>
+      <h6 class=" font-weight-bold" style="color: #6e470c; ">
+        <% if customer_signed_in? %>
+          <%= render 'public/favorites/favorite', admin: @admin %>
+        <% end %>
+      </h6>
     </div>
     <div class="col-lg-7 col-md-12 col-sm-12">
       <table class="table ">
@@ -48,33 +48,34 @@
   <div class="row">
     <div class="col-12">
       <h4 class="text-center font-weight-bold border-bottom  border-dark" style="color: #6e470c; ">
-      MAP</h4>
+        MAP
+      </h4>
     </div>
   </div>
 </div>
 <div id="map"></div>
 <script type="text/javascript">
-     function initMap() {
-       var test = {lat: <%= @admin.latitude %>, lng: <%= @admin.longitude %>};
-       var map = new google.maps.Map(document.getElementById('map'), {
-                 zoom: 15,
-                 center: test
+   function initMap() {
+     var test = {lat: <%= @admin.latitude %>, lng: <%= @admin.longitude %>};
+     var map = new google.maps.Map(document.getElementById('map'), {
+               zoom: 15,
+               center: test
+               });
+     var transitLayer = new google.maps.TransitLayer();
+     transitLayer.setMap(map);
+     var contentString = '住所：<%= @admin.address %>';
+     var infowindow = new google.maps.InfoWindow({
+       content: contentString
+     });
+     var marker = new google.maps.Marker({
+                   position:test,
+                   map: map,
+                   title: contentString
                  });
-       var transitLayer = new google.maps.TransitLayer();
-       transitLayer.setMap(map);
-       var contentString = '住所：<%= @admin.address %>';
-       var infowindow = new google.maps.InfoWindow({
-         content: contentString
-       });
-       var marker = new google.maps.Marker({
-                     position:test,
-                     map: map,
-                     title: contentString
-                   });
-       marker.addListener('click', function() {
-         infowindow.open(map, marker);
-       });
-     }
+     marker.addListener('click', function() {
+       infowindow.open(map, marker);
+     });
+   }
  </script>
  <script async defer
     src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
@@ -83,6 +84,5 @@
      #map { height: 200px;
            width: 100%;}
    </style>
-
-</div>
+  </div>
 </div>

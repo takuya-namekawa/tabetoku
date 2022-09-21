@@ -15,17 +15,16 @@ class Customer < ApplicationRecord
   end
 
   with_options presence: true do
-  validates :name
-  validates :name_kana
-  validates :phone_number
-  validates :email
+    validates :name
+    validates :name_kana
+    validates :phone_number
+    validates :email
   end
 
   def self.guest
-    find_or_create_by!(name: 'guestcustomer' ,email: 'guest@example.com' ,name_kana: 'ゲストカスタマー' ,phone_number: '0') do |customer|
+    find_or_create_by!(name: "guestcustomer", email: "guest@example.com", name_kana: "ゲストカスタマー", phone_number: "0") do |customer|
       customer.password = SecureRandom.urlsafe_base64
       customer.name = "guestcustomer"
     end
   end
-
 end
