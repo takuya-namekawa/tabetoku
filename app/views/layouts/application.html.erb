@@ -23,7 +23,7 @@
     <%= yield %>
     <span id="back">
       <a href="#">
-        <img src="/assets/arrow.png" alt="">
+        <img src=<%= asset_path 'arrow.png' %>  alt="">
       </a>
     </span>
     <%= render "layouts/footer" %>

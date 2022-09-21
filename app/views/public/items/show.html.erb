@@ -1,9 +1,9 @@
 <% if  @item_comment.errors.any? %>
  <ul class="text-center alert alert-danger"style=" list-style: none; ">
-  <%=  @item_comment.errors.count %>件のエラーが発生しました
-  <% @item_comment.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-  <% end %>
+    <%=  @item_comment.errors.count %>件のエラーが発生しました
+    <% @item_comment.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
   </ul>
 <% end %>
 <div class="container mt-5">
