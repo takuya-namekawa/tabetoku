@@ -6,12 +6,17 @@
       <% end %>
   </ul>
 <% end %>
-<div class="container pt-3">
-  <h4 class="text-center font-weight-bold mb-5 mt-3" style="color: #6e470c; ">
-    商品編集
-  </h4>
+<div class="container mt-5 mb-3 ">
   <div class="row">
-    <div class=" col-6 offset-md-3">
+    <div class="col-12">
+      <h4 class="text-center font-weight-bold " style="color: #6e470c; ">
+      商品編集</h4>
+    </div>
+  </div>
+</div>
+<div class="container pt-3">
+  <div class="row">
+    <div class=" col-md-6 offset-md-3  col-sm-10 offset-sm-1">
       <%= form_with model: @item, url:  admin_item_path(@item) do |f| %>
         <form>
           <div class="form-group row">

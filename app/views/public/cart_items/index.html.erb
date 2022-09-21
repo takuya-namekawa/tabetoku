@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-12">
       <p class="text-center font-weight-bold " style="color: #6e470c; "><i class="fas fa-shopping-cart "></i>
-      以下のお店のカートに商品が入っています<p>
+      以下のお店のカートに商品が入っています<br>30分経過するとカートの商品が削除されます<p>
     </div>
   </div>
 </div>
@@ -11,16 +11,7 @@
   <div class="row">
     <div class="col-md-12 col-sm-12 col-12">
       <table class="table bg-white border border-5 shadow-sm">
-        <thead>
-          <tr>
-            <th>店舗</th>
-            <th>商品</th>
-            <th>商品名</th>
-            <th>数量</th>
-            <th>提供価格(税込)</th>
-            <th>小計</th>
-          </tr>
-        </thead>
+
         <tbody>
           <% @cart_items.each do |cart_item| %>
             <tr>
@@ -28,8 +19,8 @@
               <td><%= image_tag cart_item.item.get_profile_image(120,120)%></td>
               <td><%= cart_item.item.name %></td>
               <td><%= cart_item.amount %>個</td>
-              <td><%= cart_item.item.half_price %>円</td>
-              <td><%= (cart_item.item.half_price).floor * cart_item.amount %>円</td>
+              <td>提供価格　<%= cart_item.item.half_price %>円</td>
+              <td>小計　<%= (cart_item.item.half_price).floor * cart_item.amount %>円</td>
               <%= form_with model: cart_item, url: cart_item_path(cart_item)  do |f| %>
                 <%= f.hidden_field :item_id, value: cart_item.item.id %>
               <% end %>
@@ -64,7 +55,7 @@
       新しく登録された商品</p>
       <% @items.first(10).each do |item| %>
         <%= link_to  item_path(item.id)  , class: "text-decoration-none " do %>
-          <%= image_tag item.get_profile_image(100, 100) , class: "mr-1 img-fluid'"%>
+          <%= image_tag item.get_profile_image(100, 100) , class: "pl-1 img-fluid "%>
       <% end %>
     <% end %>
     </div>

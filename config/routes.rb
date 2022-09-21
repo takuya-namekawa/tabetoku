@@ -42,7 +42,7 @@ Rails.application.routes.draw do
         delete 'all_destroy'
       end
     end
-
+    get 'orders/responsive' => 'orders#responsive', as: 'responsive'
     get 'orders/confirm' => 'orders#confirm', as: 'confirm'
     get 'orders/thanks' => 'orders#thanks', as: 'thanks'
     resources :orders, only: [:new, :create, :index, ]

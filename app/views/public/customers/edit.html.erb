@@ -6,10 +6,17 @@
     <% end %>
   </ul>
 <% end %>
-<div class="container pt-3 mb-1 pb-5 ">
-  <h2 class="text-center pb-4 pt-3">会員編集</h2>
-  <div class="row ">
-    <div class=" col-6 offset-md-3">
+<div class="container mt-5 mb-3 ">
+  <div class="row">
+    <div class="col-12">
+      <h4 class="text-center font-weight-bold " style="color: #6e470c; ">
+      会員編集</h4>
+    </div>
+  </div>
+</div>
+<div class="container pt-3">
+  <div class="row">
+    <div class=" col-md-6 offset-md-3  col-sm-10 offset-sm-1">
       <%= form_with model: @customer, url: customer_path(@customer) do |f| %>
         <form>
           <div class="form-group row">
@@ -20,7 +27,7 @@
           </div>
           <div class="form-group row">
             <%= f.label :フリガナ,class: "col-sm-3 col-form-label " %>
-            <div class="col-sm-9 pl-4">
+            <div class="col-sm-9  pl-4">
               <%= f.text_field :name_kana, autofocus: true, class:"form-control"%>
             </div>
           </div>
@@ -40,7 +47,7 @@
               </div>
             </div>
           </div>
-          <div class="text-center pt-3">
+          <div class="text-center pt-3 mb-3">
             <%= f.submit " 会員情報を編集する " ,class: "btn btn-danger" %>
           </div>
         </form>

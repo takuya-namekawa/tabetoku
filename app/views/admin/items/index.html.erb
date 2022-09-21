@@ -9,28 +9,18 @@
 <div class="container mb-5 pb-5 ">
 	<div class="row">
 		<div class="col">
-			<table class="table mb-5 pb-5 ">
-				<tr class="active" style="font-weight: bold">
-					<td>商品イメージ</td>
-					<td>商品名</td>
-					<td>商品説明</td>
-					<td>商品提供価格</td>
-					<td>商品正規価格</td>
-					<td>在庫数</td>
-					<td>ジャンル</td>
-					<td>販売ステータス</td>
-				</tr>
-				<br>
+			<table class="table mb-5 pb-5 table-striped">
+
 		    	<% @items.each do |item| %>
 		    		<% if item.admin == current_admin %>
 						<tr>
 							<td><%= image_tag item.get_profile_image(100,100)%></td>
 							<td><%= item.name %></td>
-							<td><%= item.explanation %></td>
-							<td><%= item.half_price %>円</td>
-							<td><%= item.price %>円</td>
-							<td><%= item.inventory %>個</td>
-							<td><%= item.genre.name %></td>
+
+							<td>提供価格　<%= item.half_price %>円</td>
+							<td>正規価格　<%= item.price %>円</td>
+							<td>在庫数　<%= item.inventory %>個</td>
+							<td>ジャンル　<%= item.genre.name %></td>
 							<td>
 								<% if item.is_ordered %>
 			            	<div class='text-success'>Sale</div>
