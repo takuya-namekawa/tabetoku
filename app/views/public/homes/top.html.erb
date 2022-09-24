@@ -44,7 +44,7 @@
           <%= link_to "全ての商品を見る →", items_path, class: " text-reset font-weight-bold"%>
         </div>
          <p class=" font-weight-bold border-bottom  border-dark " style="color: #6e470c; ">
-           お店(新着順)
+           お店(新着順)<br>お気に入り登録すると商品の新着情報やお得な情報がメールで届きます
          </p>
          <% @admins.first(6).each do |admin| %>
            <%= link_to  admin_path(admin) , class: "text-decoration-none" do %>
