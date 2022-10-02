@@ -69,6 +69,11 @@
       <p class="text-center font-weight-bold border-bottom  border-dark" style="color: #6e470c; ">
         クチコミをレビューする
       <p>
+      <% if admin_signed_in? %>
+        <p class="text-center font-weight-bold border-bottom  border-dark" style="color: #bf483f; ">
+          店舗スタッフの方へお願いです<i class="far fa-tired"></i><br>クチコミが"Negative!"の場合は、削除の検討をお願いします
+        <p>
+      <% end %>
     </div>
   </div>
 </div>
@@ -94,10 +99,19 @@
         <p class="border-bottom  border-dark">
           <%= item_comment.comment %>
         </p>
+        <% if admin_signed_in? %>
+          <% if item_comment.score  >=  0.5   %>
+            <span class="sentiment-score font-weight-bold">Positive!<strong class="bg-primary text-light pr-2 pl-2 ml-2"><%= item_comment.score %></strong></span>
+          <% elsif item_comment.score >= -0.5 %>
+            <span class="sentiment-score font-weight-bold">Centive!<strong class="bg-warning text-light pr-2 pl-2 ml-2"><%= item_comment.score %></strong></span>
+          <% else %>
+            <span class="sentiment-score font-weight-bold">Negative!<strong class="bg-danger text-light pr-2 pl-2 ml-2"><%= item_comment.score %></strong></span>
+          <% end %>
+        <% end %>
         <% if (item_comment.customer == current_customer) || admin_signed_in? %>
           <p>
             <%= link_to item_item_comment_path(item_comment.item, item_comment), method: :delete ,class: "text-reset" do %>
-              <i class="fas fa-trash-alt"></i> クチコミを削除する
+            <p class="font-weight-bold " style="color: #bf483f; "> クチコミを削除する</p>
             <% end %>
           </p>
         <% end %>
@@ -123,7 +137,7 @@
           <% if customer_signed_in?  %>
             <%= f.submit "クチコミを投稿する" ,class: 'btn btn-danger '%>
           <% else %>
-            <p class="text-center font-weight-bold " style="color: #6e470c; ">口コミを投稿する際は会員登録をお願いします</p>
+            <p class="text-center font-weight-bold " style="color: #6e470c; ">クチコミを投稿する際は会員登録お願いします</p>
           <% end %>
         <% end %>
       </div>
