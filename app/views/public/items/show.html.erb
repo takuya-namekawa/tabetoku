@@ -70,7 +70,7 @@
         クチコミをレビューする
       <p>
       <% if admin_signed_in? %>
-        <p class="text-center font-weight-bold border-bottom  border-dark" style="color: #bf483f; ">
+        <p class="text-center font-weight-bold border-bottom  border-dark" style="color: #6e470c; ">
           店舗スタッフの方へお願いです<i class="far fa-tired"></i><br>クチコミが"Negative!"の場合は、削除の検討をお願いします
         <p>
       <% end %>
@@ -111,7 +111,7 @@
         <% if (item_comment.customer == current_customer) || admin_signed_in? %>
           <p>
             <%= link_to item_item_comment_path(item_comment.item, item_comment), method: :delete ,class: "text-reset" do %>
-            <p class="font-weight-bold " style="color: #bf483f; "> クチコミを削除する</p>
+            <p class=" font-weight-bold " style="color: #6e470c; ">クチコミを削除する</p>
             <% end %>
           </p>
         <% end %>
