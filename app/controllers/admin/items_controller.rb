@@ -24,6 +24,9 @@ class Admin::ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
+    if @item.admin != current_admin
+    redirect_to root_path, alert: "不正なアクセスです"
+    end
   end
 
   def update
@@ -33,6 +36,12 @@ class Admin::ItemsController < ApplicationController
     else
       render "admin/items/edit"
     end
+  end
+
+  def destroy
+    @item = Item.find(params[:id])
+    @item.destroy
+    redirect_to admin_items_path, notice: "商品を削除しました"
   end
 
   private

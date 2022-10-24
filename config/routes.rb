@@ -59,8 +59,8 @@ Rails.application.routes.draw do
         get "my_page" => "admins#show"
       end
     end
-    resources :items, only: [:index, :new, :create, :edit, :update]
-    resources :genres, only: [:index, :create, :edit, :update]
+    resources :items, only: [:index, :new, :create, :edit, :update, :destroy]
+    resources :genres, only: [:index, :create, :edit, :update, :destroy]
     resources :reserves, only: [:index, :show, :create, :update]
     resources :customers, only: [:edit, :show, :update] do
       patch "out"
