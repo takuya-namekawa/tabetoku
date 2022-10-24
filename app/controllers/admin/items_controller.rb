@@ -25,7 +25,7 @@ class Admin::ItemsController < ApplicationController
   def edit
     @item = Item.find(params[:id])
     if @item.admin != current_admin
-    redirect_to root_path, alert: "不正なアクセスです"
+      redirect_to root_path, alert: "不正なアクセスです"
     end
   end
 

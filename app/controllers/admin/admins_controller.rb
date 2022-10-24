@@ -11,6 +11,9 @@ class Admin::AdminsController < ApplicationController
 
   def edit
     @admin = current_admin
+    if Admin.find(params[:id]) != current_admin
+      redirect_to root_path, alert: "不正なアクセスです"
+    end
   end
 
   def update

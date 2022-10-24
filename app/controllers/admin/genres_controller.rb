@@ -7,13 +7,15 @@ class Admin::GenresController < ApplicationController
   end
 
   def create
+    @admin = current_admin
     @genre = Genre.new(genre_params)
+    @genre.admin_id = @admin.id
     if @genre.save
       redirect_to my_page_admin_admins_path, notice: "ジャンルを新しく登録しました"
     else
       @admin = current_admin
       @item = Item.new
-      @genres = Genre.all
+      @genres = @admin.genres
       render "admin/admins/show"
     end
   end
