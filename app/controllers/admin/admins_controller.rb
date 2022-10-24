@@ -6,7 +6,7 @@ class Admin::AdminsController < ApplicationController
     @admin = current_admin
     @item = Item.new
     @genre = Genre.new
-    @genres = Genre.all
+    @genres = @admin.genres
   end
 
   def edit

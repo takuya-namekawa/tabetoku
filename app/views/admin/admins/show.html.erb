@@ -160,13 +160,15 @@
                 <tr>
                   <th><%= genre.name %></th>
                   <th>
-                    <%# if genre.admin == current_admin.id %>
+                    <% #if genre.admin_signed_in? %>
+                    <% #if genre.admin == current_admin.id %>
                       <%= link_to  edit_admin_genre_path(genre), class: 'btn- btn-outline-secondary mr-2' do %>
                         編集<i class="fas fa-edit"></i>
                       <% end %>
                       <%= link_to admin_genre_path(genre), method: :delete, class: 'btn- btn-outline-secondary',"data-confirm" => "本当に消しますか？" do %>
                         削除<i class="fas fa-trash"></i>
                       <% end %>
+                    <%# end %>
                     <%# end %>
                   </th>
                 </tr>
