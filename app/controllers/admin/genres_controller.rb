@@ -22,6 +22,9 @@ class Admin::GenresController < ApplicationController
 
   def edit
     @genre = Genre.find(params[:id])
+      if @genre.admin != current_admin
+        redirect_to root_path, alert: "不正なアクセスです"
+      end
   end
 
   def update
