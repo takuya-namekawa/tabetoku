@@ -8,6 +8,7 @@ class Admin < ApplicationRecord
   has_many :reserves, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
+
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
@@ -25,9 +26,9 @@ class Admin < ApplicationRecord
   with_options presence: true do
     validates :name
     validates :address
-    validates :phone_number
     validates :email
   end
+  validates :phone_number, presence: true, numericality: {only_integer: true}
 
   def self.guest
     find_or_initialize_by(email: "guest@guest.com") do |admin|

@@ -4,7 +4,7 @@ class Public::ItemCommentsController < ApplicationController
   def create
     item = Item.find(params[:item_id])
     comment = current_customer.item_comments.new(item_comments_params)
-    comment.item_id = item.id
+    comment.item_id = item.id || item.admin_id
     comment.score = Language.get_data(item_comments_params[:comment])
     if comment.save
       redirect_to item_path(item), notice: "クチコミを投稿しました"

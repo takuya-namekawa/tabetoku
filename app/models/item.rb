@@ -15,9 +15,9 @@ class Item < ApplicationRecord
 
   validates :name, presence: true
   validates :explanation, presence: true
-  validates :half_price, presence: true
-  validates :price, presence: true
-  validates :inventory, presence: true
+  validates :half_price, presence: true, numericality: {only_integer: true}
+  validates :price, presence: true, numericality: {only_integer: true}
+  validates :inventory, presence: true, numericality: {only_integer: true}
 
   scope :top, -> { order(created_at: :desc) }
   scope :old, -> { order(created_at: :asc) }
