@@ -108,7 +108,7 @@
             <span class="sentiment-score font-weight-bold">Negative!<strong class="bg-danger text-light pr-2 pl-2 ml-2"><%= item_comment.score %></strong></span>
           <% end %>
         <% end %>
-        <% if (item_comment.customer == current_customer) || admin_signed_in? %>
+        <% if (item_comment.customer == current_customer) || (admin_signed_in? && item_comment.item.admin_id == current_admin.id) %>
           <p>
             <%= link_to item_item_comment_path(item_comment.item, item_comment), method: :delete ,class: "text-reset" do %>
             <p class=" font-weight-bold " style="color: #6e470c; ">クチコミを削除する</p>
